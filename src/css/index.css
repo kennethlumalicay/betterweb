@@ -832,10 +832,20 @@ input {
   min-height: 30vh;
   display: -webkit-box;
   display: flex;
-  background-image: url('../img/splash-bg.png');
+  background-image: url('../img/splash-bg-768.jpg');
   background-size: cover;
   background-position: center;
   padding: 2rem 0;
+}
+@media screen and (min-width: 768px) {
+  .splash {
+    background-image: url('../img/splash-bg-1440.jpg');
+  }
+}
+@media screen and (min-width: 1440px) {
+  .splash {
+    background-image: url('../img/splash-bg-2560.jpg');
+  }
 }
 .splash > div {
   margin: auto 0 auto auto;
@@ -845,8 +855,7 @@ input {
 }
 .splash > div > h1 {
   padding: 0 0.5rem 0 0;
-  text-align: right;
-  font-size: 2rem;
+  font-size: 1.2rem;
   font-weight: 900;
   font-family: 'Montserrat';
   color: #333;
@@ -859,6 +868,11 @@ input {
     max-width: 50vw;
   }
 }
+@media screen and (min-width: 460px) {
+  .splash > div {
+    max-width: 50vw;
+  }
+}
 @media screen and (min-width: 768px) {
   .splash {
     min-height: 30vh;
@@ -866,15 +880,13 @@ input {
   .splash > div {
     max-width: 55vw;
   }
-  .splash > div > h1 {
-    padding: 1rem 2rem 1rem 0.5rem;
-    font-size: 3rem;
-    font-weight: 900;
-  }
 }
 @media screen and (min-width: 1024px) {
   .splash > div {
     max-width: 57vw;
+  }
+  .splash > div > h1 {
+    font-size: 1.8rem;
   }
 }
 @media screen and (min-width: 1280px) {
@@ -1075,6 +1087,10 @@ input {
   padding: 0.5rem 1rem;
   margin: 0.1rem auto 0.1rem 0;
   border: 0.1rem solid #333;
+  transition: all 0.25s ease-in-out;
+}
+.post-links > a:hover {
+  background-color: #555;
 }
 .post > h2, .post > h3 {
   font-size: inherit;
@@ -1098,6 +1114,11 @@ input {
 }
 .post > h3 > a {
   color: #aaa;
+  font-weight: 400;
+  transition: all 0.25s ease-in-out;
+}
+.post > h3 > a:hover {
+  color: #ccc;
 }
 /* xx POSTS END xx */
 /* -- POST PAGE -- */
@@ -1209,7 +1230,7 @@ input {
           transform: scale(0.8);
 }
 .comment:hover {
-  background-color: #555;
+  background-color: #444;
 }
 .commentUser {
   display: -webkit-box;
@@ -1363,9 +1384,12 @@ input {
           transform: scale(0);
   opacity: 0;
   border-radius: 50%;
-  background-color: #888;
+  background-color: #777;
   border: 2px solid #333;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+.actionButton:hover {
+  background-color: #999;
 }
 .trash {
   padding: 0.1rem 0.3rem;

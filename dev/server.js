@@ -76,13 +76,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.enable('trust proxy');
 
 // Static
-app.use('/actions', express.static(process.cwd() + './js/actions'));
-app.use('/components', express.static(process.cwd() + './js/components'));
-app.use('/config', express.static(process.cwd() + './js/config'));
-app.use('/containers', express.static(process.cwd() + './js/containers'));
-app.use('/models', express.static(process.cwd() + './js/models'));
-app.use('/reducers', express.static(process.cwd() + './js/reducers'));
-app.use('/api', express.static(process.cwd() + './js/api'));
 app.use('/src', express.static('src'));
 app.use('/build', express.static('build'));
 app.use('/dist', express.static('dist'));

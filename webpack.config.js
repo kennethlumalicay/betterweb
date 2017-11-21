@@ -1,6 +1,5 @@
 var path = require('path');
 var webpack = require('webpack');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 var fs = require('fs');
 
 var nodeModules = {};
@@ -32,7 +31,10 @@ const commonConfig = {
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new UglifyJSPlugin()
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    }),
+    new webpack.optimize.UglifyJsPlugin()
   ]
 }
 

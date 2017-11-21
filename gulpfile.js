@@ -46,7 +46,8 @@ var serverConfig = {
     filename: 'server.js'
   },
   target: 'node',
-  externals: nodeModules
+  externals: nodeModules,
+  ...config
 };
 
 var clientConfig = {
@@ -54,7 +55,8 @@ var clientConfig = {
   output: {
     path: path.join(__dirname, 'build'),
     filename: 'client.js'
-  }
+  },
+  ...config
 };
 
 function onBuild(done) {
@@ -73,22 +75,22 @@ function onBuild(done) {
 }
 
 gulp.task('build-server', function(done) {
-  webpack({...config, ...serverConfig}).run(onBuild(done));
+  webpack(serverConfig).run(onBuild(done));
 });
 
 gulp.task('watch-server', function() {
-  webpack({...config, ...serverConfig}).watch(100, function(err, stats) {
+  webpack(serverConfig).watch(100, function(err, stats) {
     onBuild()(err, stats);
     nodemon.restart();
   });
 });
 
 gulp.task('build-client', function(done) {
-  webpack({...config, ...clientConfig}).run(onBuild(done));
+  webpack(clientConfig).run(onBuild(done));
 });
 
 gulp.task('watch-client', function() {
-  webpack({...config, ...clientConfig}).watch(100, onBuild());
+  webpack(clientConfig).watch(100, onBuild());
 });
 
 gulp.task('build', ['build-client', 'build-server']);
