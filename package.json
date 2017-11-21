@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node dev.js",
-    "build": "webpack && node dev.js",
-    "prod": "webpack -p",
+    "build": "webpack && node dist/server.min.js",
+    "prod": "webpack",
     "dev": "gulp run"
   },
   "author": "",
@@ -29,6 +29,7 @@
     "eslint-plugin-react": "^7.4.0",
     "gulp": "^3.9.1",
     "nodemon": "^1.12.1",
+    "uglifyjs-webpack-plugin": "^1.1.0",
     "webpack": "^3.8.1",
     "webpack-dev-server": "^2.9.4"
   },
@@ -57,6 +58,8 @@
     "react-router-dom": "^4.2.2",
     "react-transition-group": "^2.2.1",
     "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0"
+    "redux-socket.io": "^1.4.0",
+    "redux-thunk": "^2.2.0",
+    "socket.io": "^2.0.4"
   }
 }

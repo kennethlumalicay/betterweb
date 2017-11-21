@@ -10,12 +10,13 @@ import bodyParser from 'body-parser';
 import { StaticRouter } from 'react-router-dom';
 import multer from 'multer';
 import path from 'path';
+import socket from 'socket.io';
 var mongoStore = require('connect-mongo')(session);
 require('dotenv').load();
 
 // File imports
 import App from './js/components/App.js';
-import Store from './store.js';
+import { ServerStore } from './store.js';
 import routes from './js/routes/index.js';
 require('./js/config/passport')(passport);
 
@@ -57,6 +58,14 @@ const upload = multer({
   }
 });
 
+// Socket io
+var http = require('http').Server(app);
+var io = socket(http);
+io.on('connection', function(socket) {
+  socket.on('action', action => {
+    io.sockets.emit('action', { type: action.type.replace('server/',''), payload: action.payload });
+  });
+});
 
 // Passport
 app.use(passport.initialize());
@@ -99,7 +108,7 @@ function handleRender(req, res) {
       }
   };
 
-  const store = Store(initialState);
+  const store = ServerStore(initialState);
   const context = {};
   const title = 'Betterweb';
   const description = 'Help web developers make the web a better place by sharing your thoughts.';
@@ -149,4 +158,5 @@ function renderFullPage(html, title, description, preloadedState, clientSrc) {
 }
 
 var port = process.env.PORT || 8080;
-app.listen(port);
+//app.listen(port);
+http.listen(port);

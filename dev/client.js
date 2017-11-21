@@ -4,7 +4,7 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import App from './js/components/App.js';
-import Store from './store.js';
+import { ClientStore } from './store.js';
 
 // Grab the state from a global variable injected into the server-generated HTML
 const preloadedState = window.__PRELOADED_STATE__;
@@ -13,7 +13,7 @@ const preloadedState = window.__PRELOADED_STATE__;
 delete window.__PRELOADED_STATE__;
 
 // Create Redux store with initial state
-const store = Store(preloadedState);
+const store = ClientStore(preloadedState);
 
 // BrowserRouter for client side
 render(

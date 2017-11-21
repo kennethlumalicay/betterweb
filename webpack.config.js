@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 var fs = require('fs');
 
 var nodeModules = {};
@@ -30,7 +31,8 @@ const commonConfig = {
     ]
   },
   plugins: [
-    new webpack.optimize.OccurrenceOrderPlugin()
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new UglifyJSPlugin()
   ]
 }
 

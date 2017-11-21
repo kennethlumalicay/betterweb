@@ -58,7 +58,7 @@ export function addPost(form) {
       data
     })
       .then(res => {
-        dispatch({ type: 'ADDED_POST', payload: res.data });
+        dispatch({ type: 'server/ADDED_POST', payload: res.data });
       })
       .catch(() => {
         dispatch({ type: 'FAILED_ADD_POST' });
@@ -75,7 +75,7 @@ export function editPost(form) {
       data
     })
       .then(res => {
-        dispatch({ type: 'UPDATED_POST', payload: res.data });
+        dispatch({ type: 'server/UPDATED_POST', payload: res.data });
       })
       .catch(() => {
         dispatch({ type: 'FAILED_UPDATE_POST' });
@@ -91,7 +91,7 @@ export function deletePost(post) {
       params: post
     })
       .then(() => {
-        dispatch({ type: 'DELETED_POST', payload: post.pid });
+        dispatch({ type: 'server/DELETED_POST', payload: post.pid });
       })
       .catch(() => {
         dispatch({ type: 'FAILED_DELETE_POST' });
@@ -139,7 +139,7 @@ export function addComment(form) {
       params: form
     })
       .then(res => {
-        dispatch({ type: 'ADDED_COMMENT', payload: res.data, pid: form.pid });
+        dispatch({ type: 'server/ADDED_COMMENT', payload: res.data, pid: form.pid });
       })
       .catch(() => {
         dispatch({ type: 'FAILED_TO_COMMENT' });
@@ -155,7 +155,7 @@ export function deleteComment(query) {
       params: query
     })
       .then(() => {
-        dispatch({ type: 'DELETED_COMMENT', payload: query.cid });
+        dispatch({ type: 'server/DELETED_COMMENT', payload: query.cid });
       })
       .catch(() => {
         dispatch({ type: 'FAILED_DELETE_COMMENT' });
