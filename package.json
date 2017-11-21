@@ -1,15 +1,15 @@
 {
-  "name": "app",
+  "name": "BetterWeb",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "server.min.js",
   "scripts": {
-    "start": "node dev.js",
+    "start": "node dist/server.min.js",
     "build": "webpack && node dist/server.min.js",
     "prod": "webpack",
     "dev": "gulp run"
   },
-  "author": "",
+  "author": "Kenneth Lu Malicay",
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.26.0",
