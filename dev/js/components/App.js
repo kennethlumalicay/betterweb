@@ -1,15 +1,15 @@
 import React, { Component } from 'react'; // eslint-disable-line
-import Nav from './../containers/Nav.js';
 import Routes from './../routes/app-router.js';
+import Notif from './../containers/notif.js';
 
 class App extends Component {
   render() {
     return (
-      <section id = 'app'>
-        <Nav />
-        <Routes />
-        <footer >
-          <p>App made by <a href='https://kennethlumalicay.github.io/' target='_blank' rel='noopener noreferrer'>Kenneth Malicay</a></p>
+      <section id='app'>
+        <Notif/>
+        <Routes/>
+        <footer>
+          <p>App made by <a href='https://kennethlumalicay.github.io/' target='_blank' rel='noopener noreferrer'>Kenneth Malicay</a>. Don't forget to star the <a href='#' target='_blank' rel='noopener noreferrer'>github repo</a> if you liked this!</p>
         </footer>
       </section>
     );

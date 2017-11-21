@@ -1,30 +1,81 @@
-var api = require('./../api/api.js');
+var userApi = require('./../api/userApi.js');
+var postApi = require('./../api/postApi.js');
+var commentApi = require('./../api/commentApi.js');
 
+module.exports = function (app, passport, upload) {
 
-module.exports = function (app, passport) {
-  const email = process.env.EMAIL_SUPPORT;
-
-  app.route('/admin/login')
-    .post(passport.authenticate('local', {successRedirect: '/admin', failureRedirect: '/admin/failed?' + email}));
+  app.route('/login')
+    .post(passport.authenticate('local', {successRedirect: '/', failureRedirect: '/?failed'}));
 
   app.route('/signout')
     .get(function (req, res) {
       req.logout();
-      res.redirect('/admin');
+      res.redirect('/');
     });
 
-  app.route('/api/fetchAdmins')
-    .get(function (req, res) {
-      api.fetchUsers(req.query, (docs) => res.send(docs));
+  app.route('/register')
+    .post(function (req, res, next) {
+      userApi.addUser(req.body, (docs) => {
+        req.login(docs, (err) => {
+          if(err) return next(err);
+          res.redirect('/');
+        });
+      });
     });
 
-  app.route('/api/addAdmin')
+  app.route('/api/fetchUser')
     .get(function (req, res) {
-      api.addUser(req.query, (docs) => res.send(docs));
+      userApi.fetchUser(req.query, (docs) => res.send(docs));
     });
 
-  app.route('/api/removeAdmin')
+  app.route('/api/updateUser')
+    .post(function (req, res) {
+      userApi.updateUser(req.query, (docs) => res.send(docs));
+    });
+
+  app.route('/api/fetchPosts')
     .get(function (req, res) {
-      api.removeUser(req.query, (docs) => res.send(docs));
+      postApi.fetchPosts(req.query, (docs) => res.send(docs));
+    });
+
+  app.route('/api/fetchOnePost')
+    .get(function (req, res) {
+      postApi.fetchOnePost(req.query, (docs) => res.send(docs));
+    });
+
+  app.route('/api/addPost')
+    .post(upload.single('img'), function (req, res) {
+      postApi.addPost({...req.body, img: req.file.filename}, (docs) => res.send(docs));
+    });
+
+  app.route('/api/editPost')
+    .post(upload.single('newImg'), function (req, res) {
+      const newImg = !req.file ? '' : req.file.filename;
+      postApi.editPost({...req.body, newImg: newImg}, (docs) => res.send(docs));
+    });
+
+  app.route('/api/deletePost')
+    .get(function (req, res) {
+      postApi.deletePost(req.query, (docs) => res.send(docs));
+    });
+
+  app.route('/api/fetchComments')
+    .get(function (req, res) {
+      commentApi.fetchComments(req.query, (docs) => res.send(docs));
+    });
+
+  app.route('/api/fetchPageComments')
+    .get(function (req, res) {
+      commentApi.fetchPageComments(req.query, (docs) => res.send(docs));
+    });
+
+  app.route('/api/addComment')
+    .get(function (req, res) {
+      commentApi.addComment(req.query, (docs) => res.send(docs));
+    });
+
+  app.route('/api/deleteComment')
+    .get(function (req, res) {
+      commentApi.deleteComment(req.query, (docs) => res.send(docs));
     });
 };

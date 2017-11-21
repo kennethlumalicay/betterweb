@@ -1,10 +1,14 @@
 import {combineReducers} from 'redux';
 import UserReducer from './reducer-user';
-import AdminsReducer from './reducer-admins';
+import PostsReducer from './reducer-posts';
+import CommentsReducer from './reducer-comments';
+import NotifReducer from './reducer-notif';
 
 const allReducers = combineReducers({
   user: UserReducer,
-  admins: AdminsReducer
+  posts: PostsReducer,
+  comments: CommentsReducer,
+  notif: NotifReducer
 });
 
 export default allReducers;

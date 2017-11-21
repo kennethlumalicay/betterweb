@@ -20,6 +20,7 @@ module.exports = {
         "indent": ["error", 2, {"SwitchCase": 1}],
         "quotes": ["error", "single"],
         "semi": ["error", "always"],
-        "react/jsx-uses-vars": 2
+        "react/jsx-uses-vars": 2,
+        "no-case-declarations": 0
     }
 };

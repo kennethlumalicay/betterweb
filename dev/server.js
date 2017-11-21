@@ -8,6 +8,8 @@ import passport from 'passport';
 import session from 'express-session';
 import bodyParser from 'body-parser';
 import { StaticRouter } from 'react-router-dom';
+import multer from 'multer';
+import path from 'path';
 var mongoStore = require('connect-mongo')(session);
 require('dotenv').load();
 
@@ -29,6 +31,32 @@ app.use(session({
   saveUninitialized: true,
   store: new mongoStore({ mongooseConnection: mongoose.connection })
 }));
+
+// File Upload
+const storage = multer.diskStorage({
+  destination: './src/uploads/',
+  filename: function(req, file, cb) {
+    cb(null, req.body.uid + Date.now().toString(36) + path.extname(file.originalname));
+  }
+});
+const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 1500000
+  },
+  fileFilter: function(req, file, cb) {
+    switch(path.extname(file.originalname)) {
+      case '.jpg':
+      case '.png':
+      case '.gif':
+      case '.jpeg':
+      case '.jpe':
+        return cb(null, true);
+    }
+    cb(new Error('Invalid image file type.'));
+  }
+});
+
 
 // Passport
 app.use(passport.initialize());
@@ -56,22 +84,25 @@ app.set('views', __dirname + '/../src');
 app.set('view engine', 'html');
 
 // Routes
-routes(app, passport);
+routes(app, passport, upload);
 
 // https://github.com/reactjs/redux/blob/master/docs/recipes/ServerRendering.md
 app.use(handleRender);
 function handleRender(req, res) {
   let initialState = {
-    user: req.user,
-    admins: {
-      accounts: [],
-      logs: ''
-    }
+    user: req.user
+      || {
+        uid: 'guest' + req.sessionID,
+        username: 'Guest',
+        usertag: 'User',
+        guest: true
+      }
   };
 
   const store = Store(initialState);
   const context = {};
-  const title = 'TITLE';
+  const title = 'Betterweb';
+  const description = 'Help web developers make the web a better place by sharing your thoughts.';
 
   // StaticRouter for server side
   const html = renderToString(
@@ -83,14 +114,14 @@ function handleRender(req, res) {
   );
 
   const preloadedState = store.getState();
-  const clientSrc = process.env.NODE_ENV == 'production'
+  const clientSrc = process.env.NODE_ENV === 'production'
     ? '/dist/client.min.js'
     : '/build/client.js';
 
-  res.send(renderFullPage(html, title, preloadedState, clientSrc));
+  res.send(renderFullPage(html, title, description, preloadedState, clientSrc));
 }
 
-function renderFullPage(html, title, preloadedState, clientSrc) {
+function renderFullPage(html, title, description, preloadedState, clientSrc) {
   return `
     <!doctype html>
     <html lang="en">
@@ -100,7 +131,7 @@ function renderFullPage(html, title, preloadedState, clientSrc) {
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" type="image/png" href="/src/img/favicon.png">
         <title>${title}</title>
-        <meta name="description" content="Description of the page less than 150 characters">
+        <meta name="description" content="${description}">
         <script src="https://use.fontawesome.com/663123f680.js"></script>
         <link href="/src/css/index.css" rel="stylesheet" type="text/css">
       </head>

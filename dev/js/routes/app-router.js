@@ -1,17 +1,19 @@
 import React, { Component } from 'react'; // eslint-disable-line
 import { Route } from 'react-router-dom';
-import Admin from './../containers/Admin.js';
-import Home from './../containers/Home.js';
+import Home from './../components/Home.js';
+import Nav from './../containers/Nav.js';
+import UserPage from './../components/UserPage.js';
+import PostPage from './../containers/PostPage.js';
 
 class Routes extends Component {
   render() {
     return (
       <section id='route'>
-        <div id='content'>
-          <Route component={ScrollToTop} />
-          <Route path='/admin' component={Admin} />
-          <Route path='/' component={Home} exact />
-        </div>
+        <Route component={ScrollToTop} />
+        <Route component={Nav} />
+        <Route path='/' component={Home} exact />
+        <Route path='/user/:uid' component={UserPage}/>
+        <Route path='/post/:pid' component={PostPage}/>
       </section>
     );
   }
