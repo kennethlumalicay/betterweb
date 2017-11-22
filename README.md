@@ -16,6 +16,8 @@ This is an open community where you could share your thoughts and help improve t
 ### Guest:
 * Feel free to share your thoughts or make your own posts to get feedback.
 
+---
+
 ## Tech stack:
 * Express
 * MongoDB
@@ -25,6 +27,8 @@ This is an open community where you could share your thoughts and help improve t
 * Socket.io
 * AWS S3
 * Local Passport
+
+---
 
 ## Todo:
 * image compression
