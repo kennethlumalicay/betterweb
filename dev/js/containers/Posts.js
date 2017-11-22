@@ -154,13 +154,13 @@ class Posts extends Component {
           </label>
           <label>
             <select onChange={(e) => this.changeDateFilter(e)}>
-              <option value='1'>Today</option>
-              <option value='3'>3 Days</option>
-              <option value='7'>This Week</option>
-              <option value='30'>This Month</option>
-              <option value='90'>3 Months</option>
-              <option value='180'>6 Months</option>
               <option value='365'>This Year</option>
+              <option value='180'>6 Months</option>
+              <option value='90'>3 Months</option>
+              <option value='30'>This Month</option>
+              <option value='7'>This Week</option>
+              <option value='3'>3 Days</option>
+              <option value='1'>Today</option>
             </select>
           </label>
         </div>

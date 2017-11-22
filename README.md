@@ -1,12 +1,17 @@
 ![Logo](https://betterwebklm.herokuapp.com/src/img/betterweb-logo.png "Hey, you're awesome!")
 
 # Welcome to BetterWeb
-### Developers:
-* Submit your websites to get feedbacks from other developers/users.
+This is an open community where you could share your thoughts and help improve the quality of deployed apps or websites.
+
+### Developers
+* Post your works and get feedback from users and fellow developers!
+* You could add your project's github repository so people can contribute or inspect your code. Open source projects are encouraged.
+* Don't forget to help out other developers as well.
 * Logged in developers can track their posts.
 
-### Users:
-* Help make the web a better place by sharing your thoughts.
+### Users / Clients / Friends / Family
+* Help make the web a better place just by sharing your thoughts!
+* More features to be added in the future.
 
 ### Guest:
 * Feel free to share your thoughts or make your own posts to get feedback.
