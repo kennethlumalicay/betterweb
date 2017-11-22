@@ -1,9 +1,15 @@
-# BetterWeb
+![Logo](https://betterwebklm.herokuapp.com/src/img/betterweb-logo.png "Hey, you're awesome!")
+
+# Welcome to BetterWeb
 ### Developers:
 * Submit your websites to get feedbacks from other developers/users.
+* Logged in developers can track their posts.
 
 ### Users:
-Help make the web a better place by sharing your thoughts.
+* Help make the web a better place by sharing your thoughts.
+
+### Guest:
+* Feel free to share your thoughts or make your own posts to get feedback.
 
 ## Tech stack:
 * Express
