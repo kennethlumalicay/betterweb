@@ -7,6 +7,7 @@ var Post = new Schema({
   username: String,
   usertag: String,
   img: String,
+  imgLocation: String,
   title: String,
   description: String,
   liveLink: String,

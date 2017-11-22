@@ -1,6 +1,8 @@
 import Post from './../models/post.js';
-import fs from 'fs';
+import aws from 'aws-sdk';
 import { updateAllUserComments, deletePostComments } from './commentApi.js';
+
+const s3 = new aws.S3();
 
 export const fetchPosts = (query, cb) => {
   Post.find({}, (err, posts) => {
@@ -23,6 +25,7 @@ export const addPost = (query, cb) => {
     username: query.username,
     usertag: query.usertag,
     img: query.img,
+    imgLocation: query.imgLocation,
     title: query.title,
     description: query.description,
     liveLink: query.liveLink,
@@ -45,9 +48,15 @@ export const editPost = (query, cb) => {
     Object.keys(query).forEach(key => {
       post[key] = query[key] ? query[key] : post[key];
     });
-    if(query.newImg) {
-      fs.unlinkSync('./src/uploads/' + post.img);
+    if(query.new) {
+      s3.deleteObject({
+        Bucket: process.env.S3_BUCKET_NAME,
+        Key: post.img
+      }, err => {
+        if(err) throw err;
+      });
       post.img = query.newImg;
+      post.imgLocation = query.newImgLocation;
     }
     post.save(err => {
       if(err) throw err;
@@ -59,7 +68,10 @@ export const editPost = (query, cb) => {
 export const deletePost = (query, cb) => {
   Post.remove({pid: query.pid}, err => {
     if(err) throw err;
-    fs.unlink('./src/uploads/' + query.img, err => {
+    s3.deleteObject({
+      Bucket: process.env.S3_BUCKET_NAME,
+      Key: query.img
+    }, err => {
       if(err) throw err;
       deletePostComments(query.pid, cb);
     });

@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var fs = require('fs');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 var nodeModules = {};
 fs.readdirSync('node_modules')
@@ -10,6 +11,11 @@ fs.readdirSync('node_modules')
   .forEach(function(mod) {
     nodeModules[mod] = 'commonjs ' + mod;
   });
+
+const pathsToClean = [
+  'dist',
+  'build'
+]
 
 const commonConfig = {
   module: {
@@ -30,6 +36,7 @@ const commonConfig = {
     ]
   },
   plugins: [
+    new CleanWebpackPlugin(pathsToClean),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')

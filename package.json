@@ -24,6 +24,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "babel-register": "^6.26.0",
     "browser-sync": "^2.18.13",
+    "clean-webpack-plugin": "^0.1.17",
     "cross-env": "^5.1.1",
     "eslint": "^4.10.0",
     "eslint-plugin-react": "^7.4.0",
