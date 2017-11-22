@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { addComment, fetchComments, deleteComment } from './../actions/actions.js';
-import { oneTag, getTagColor } from './../config/usertags.js';
 import Comment from './../components/Comment.js';
 
 var md = require('markdown-it')({

@@ -24,6 +24,7 @@ export const addComment = (query, cb) => {
     usertag: query.usertag,
     comment: query.comment,
     ups: 0,
+    timestamp: Date.now(),
     guest: query.guest
   });
   newComment.save(err => {

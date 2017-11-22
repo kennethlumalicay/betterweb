@@ -4,7 +4,7 @@ import { oneTag } from './../config/usertags.js';
 
 export default (props) => (
   <div className='post'>
-    { props.owner
+    { props.deletePermission
       ? (
         <div className='buttonHolder'>
           <button className='actionButton trash' onClick={props.delete}><i className="fa fa-trash-o" aria-hidden="true"></i></button>

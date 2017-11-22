@@ -86,7 +86,7 @@ class PostPage extends Component {
     }
     return (
       <section id='postpage'>
-        <Post post={post} page={true} editable={true} owner={user.uid === post.uid} delete={() => this.props.deletePost(post)} edit={() => this.openEditPost()}/>
+        <Post post={post} page={true} editable={true} deletePermission={user.uid === post.uid || user.mod || user.admin} delete={() => this.props.deletePost(post)} edit={() => this.openEditPost()}/>
         <Comments post={post}/>
 
         <Modal className='modal' isOpen={editPostModal} onRequestClose={() => this.closeEditPost()} shouldCloseOnOverlayClick={false}>

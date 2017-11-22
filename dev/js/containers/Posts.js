@@ -123,6 +123,8 @@ class Posts extends Component {
         </section>
       );
     }
+
+    const { user } = this.props;
     const byUid = this.filterByUid(this.props.posts.items);
     const byDate = this.filterByDate(byUid);
     const bySearch = this.filterBySearch(byDate);
@@ -133,7 +135,7 @@ class Posts extends Component {
         timeout={500}
         classNames='post'
       >
-        <Post post={post} owner={this.props.user.uid === post.uid} delete={() => this.props.deletePost(post)}/>
+        <Post post={post} deletePermission={user.uid === post.uid || user.mod || user.admin} delete={() => this.props.deletePost(post)}/>
       </CSSTransition>
     ));
 

@@ -1,6 +1,6 @@
 # BetterWeb
 ### Developers:
-Submit your websites to get feedbacks from other developers/users.
+* Submit your websites to get feedbacks from other developers/users.
 
 ### Users:
 Help make the web a better place by sharing your thoughts.
@@ -12,9 +12,11 @@ Help make the web a better place by sharing your thoughts.
 * Node js
 * Redux
 * Socket.io
+* AWS S3
 * Local Passport
 
 ## Todo:
+* image compression
 * socket for user update
 * more user information
 * user email verification
