@@ -9,6 +9,8 @@ import session from 'express-session';
 import bodyParser from 'body-parser';
 import { StaticRouter } from 'react-router-dom';
 import multer from 'multer';
+import multers3 from 'multer-s3';
+import aws from 'aws-sdk';
 import path from 'path';
 import socket from 'socket.io';
 var mongoStore = require('connect-mongo')(session);
@@ -34,14 +36,18 @@ app.use(session({
 }));
 
 // File Upload
-const storage = multer.diskStorage({
-  destination: './src/uploads/',
-  filename: function(req, file, cb) {
-    cb(null, req.body.uid + Date.now().toString(36) + path.extname(file.originalname));
-  }
-});
+const s3 = new aws.S3();
 const upload = multer({
-  storage: storage,
+  storage: multers3({
+    s3: s3,
+    bucket: process.env.S3_BUCKET_NAME,
+    metdata: function(req, file, cb) {
+      cb(null, {fieldName: file.fieldName});
+    },
+    key: function(req, file, cb) {
+      cb(null, req.body.uid + Date.now().toString(36) + path.extname(file.originalname));
+    }
+  }),
   limits: {
     fileSize: 1500000
   },

@@ -14,7 +14,7 @@ export default (props) => (
         </div>
       )
       : null }
-    <img src={'/src/uploads/' + props.post.img}/>
+    <img src={props.post.img}/>
     <h2>{props.post.title}</h2>
     <p>{props.post.description}</p>
     <div className='post-links'>

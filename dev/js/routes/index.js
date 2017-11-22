@@ -45,12 +45,12 @@ module.exports = function (app, passport, upload) {
 
   app.route('/api/addPost')
     .post(upload.single('img'), function (req, res) {
-      postApi.addPost({...req.body, img: req.file.filename}, (docs) => res.send(docs));
+      postApi.addPost({...req.body, img: req.file.location}, (docs) => res.send(docs));
     });
 
   app.route('/api/editPost')
     .post(upload.single('newImg'), function (req, res) {
-      const newImg = !req.file ? '' : req.file.filename;
+      const newImg = !req.file ? '' : req.file.location;
       postApi.editPost({...req.body, newImg: newImg}, (docs) => res.send(docs));
     });
 
