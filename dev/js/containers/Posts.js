@@ -145,9 +145,9 @@ class Posts extends Component {
           <input type='text' placeholder='Search' onChange={(e) => this.changeFilter(e)}/>
           <label>
             <select onChange={(e) => this.changeSort(e)}>
+              <option value='new'>Newest</option>
               <option value='best'>Best</option>
               <option value='relevance'>Relevance</option>
-              <option value='new'>Newest</option>
               <option value='mostDiscussed'>Most Discussed</option>
               <option value='needFeedback'>Need Feedback</option>
             </select>

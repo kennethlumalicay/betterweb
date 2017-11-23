@@ -14,7 +14,7 @@ export default (props) => (
         </div>
       )
       : null }
-    <img src={props.post.imgLocation}/>
+    <div className='post-img' style={{backgroundImage: 'url('+props.post.imgLocation+')'}}></div>
     <h2>{props.post.title}</h2>
     <p>{props.post.description}</p>
     <div className='post-links'>
