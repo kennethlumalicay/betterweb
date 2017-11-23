@@ -25,7 +25,7 @@ export default (props) => (
         ? <a href={props.post.githubLink} target='_blank' rel='noopener noreferrer'>Github Repo</a>
         : null }
       { !props.page
-        ? <Link to={'/post/' + props.post.pid}>Discussion</Link>
+        ? <Link to={'/post/' + props.post.pid}>Discussion <sup>{props.post.commentCount || ''}</sup></Link>
         : null }
     </div>
     <h3>

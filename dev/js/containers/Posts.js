@@ -25,8 +25,8 @@ class Posts extends Component {
     super(props);
     this.state = {
       search: '',
-      sort: 'best',
-      dateFilter: '1'
+      sort: 'new',
+      dateFilter: '365'
     };
   }
 
