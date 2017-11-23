@@ -479,7 +479,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 :root {
-  font-size: 14px;
+  font-size: 16px;
 }
 @media screen and (min-width: 768px) {
   :root {
@@ -511,7 +511,7 @@ h1, h2, h3, h4, h5, h6 {
     width: 0.5rem;
 }
 *::-webkit-scrollbar-track {
-  background-color: #0000;
+  background-color: rgba(0,0,0,0);
 }
 *::-webkit-scrollbar-thumb {
   background-color: #eee;
@@ -520,7 +520,7 @@ h1, h2, h3, h4, h5, h6 {
 button, html [type="button"], [type="reset"], [type="submit"], [type="file"], a {
   margin: 0;
   padding: 0;
-  background-color: #0000;
+  background-color: rgba(0,0,0,0);
   border: none;
   outline: none;
   font-family: 'Open Sans';
@@ -594,7 +594,7 @@ input {
   margin: auto 0 auto auto;
   color: #eee;
   padding: 1rem;
-  border: 2px solid #0000;
+  border: 2px solid rgba(0,0,0,0);
   transition: all 0.5s ease-in-out;
 }
 .dropdown:hover {
@@ -638,7 +638,7 @@ input {
   font-family: 'Montserrat';
   padding: 1rem 3rem 1rem 0.5rem;
   color: #eee;
-  border-left: 0.5rem solid #eee0;
+  border-left: 0.5rem solid rgba(0,0,0,0);
   transition: all 0.25s ease-in-out;
 }
 .menu > ul > li > a:hover {
@@ -675,7 +675,7 @@ input {
     min-width: 5rem;
     color: #eee;
     border-left: none;
-    border-bottom: 0.5rem solid #eee0;
+    border-bottom: 0.5rem solid rgba(0,0,0,0);
   }
   .menu > ul > li > a:hover {
     border-left: none;
@@ -723,7 +723,7 @@ input {
           align-items: center;
   padding: 0.5rem 1rem;
   border: 1rem solid #333;
-  background-color: #eeed;
+  background-color: rgba(233,233,233,0.6);
 }
 .modal-close {
   flex-shrink: 0;
@@ -851,7 +851,7 @@ input {
   margin: auto 0 auto auto;
   padding: 1rem 0.5rem 1rem 0.5rem;
   max-width: 60vw;
-  background-color: #eeee;
+  background-color: rgba(233,233,233,0.9);
 }
 .splash > div > h1 {
   padding: 0 0.5rem 0 0;
@@ -930,7 +930,7 @@ input {
   position: relative;
   padding: 0.2rem 1rem;
   border: 2px solid #363635;
-  background-color: #444e;
+  background-color: rgba(68,68,68,0.9);
   color: #eee;
   text-transform: uppercase;
   margin: 0.1rem auto;
@@ -985,7 +985,7 @@ input {
   font-size: 1.2rem;
   padding: 0.3rem 1rem;
   border: none;
-  box-shadow: 0px 2px 2px #333e;
+  box-shadow: 0px 2px 2px rgba(51,51,51,0.9);
   width: 20rem;
 }
 @media screen and (min-width: 460px) {
@@ -1013,7 +1013,7 @@ input {
   padding: 0 2rem;
 }
 .post {
-  padding: 0.5rem 0.5%;
+  padding: 0.5rem 0.5rem;
   border-radius: 2px;
   margin: 0.5rem 0.5%;
   display: -webkit-box;
@@ -1033,16 +1033,21 @@ input {
 .post > img {
   margin: 0 auto;
   max-width: 100%;
-  max-height: 12rem;
+  max-height: 20rem;
 }
 @media screen and (min-width: 460px) {
   .post {
-    width: 48%;
+    width: 45%;
+    padding: 0.5rem 2%;
+  }
+  .post > img {
+    max-height: 12rem;
   }
 }
 @media screen and (min-width: 1024px) {
   .post {
     width: 23%;
+    padding: 0.5rem 0.5%;
   }
 }
 @media screen and (min-width: 1600px) {
@@ -1085,7 +1090,7 @@ input {
 .post-links > a {
   color: #eee;
   padding: 0.5rem 1rem;
-  margin: 0.1rem auto 0.1rem 0;
+  margin: 0.2rem auto 0.2rem 0;
   border: 0.1rem solid #333;
   transition: all 0.25s ease-in-out;
 }
@@ -1172,7 +1177,7 @@ input {
 #comments textarea {
   display: inline-block;
   resize: none;
-  background-color: #444e;
+  background-color: rgba(68,68,68,0.9);
   color: #ccc;
   caret-color: #eee;
   border-radius: 2px;
@@ -1186,7 +1191,7 @@ input {
 #comments > form [type='submit'], #comments > form button {
   display: inline-block;
   border-radius: 2px;
-  background-color: #aaae;
+  background-color: rgba(170,170,170,0.9);
   padding: 0.5rem;
   color: #333;
 }
@@ -1308,18 +1313,18 @@ input {
   }
   #postpage > .post {
     align-self: flex-start;
-    width: 25%;
+    width: 30%;
     max-width: 30rem;
     position: fixed;
     top: 4rem;
     left: 5%;
   }
   #postpage > .post img {
-    max-height: 35vh;
+    max-height: 30vh;
   }
   #comments {
-    margin: auto 5% auto 35%;
-    max-width: 60%;
+    margin: auto 5% auto 40%;
+    max-width: 55%;
     /*max-height: 80vh;*/
   }
   #comments form {

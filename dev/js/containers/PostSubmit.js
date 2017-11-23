@@ -80,18 +80,19 @@ class PostSubmit extends Component {
 
   render() {
     const { user, edit, post } = this.props;
+    const data = edit ? post : user;
 
     return (
       <section id='postsubmit'>
         <form className='form' onSubmit={(e) => this.submitPost(e)}>
-          <input type='hidden' name='uid' value={user.uid}/>
-          <input type='hidden' name='usertag' value={user.usertag}/>
-          <input type='hidden' name='guest' value={user.guest}/>
+          <input type='hidden' name='uid' value={data.uid}/>
+          <input type='hidden' name='usertag' value={data.usertag}/>
+          <input type='hidden' name='guest' value={data.guest}/>
           { edit
             ? [<input key='img' type='hidden' name='img' value={post.img}/>,
               <input key='pid' type='hidden' name='pid' value={post.pid}/>]
             : null }
-          <input type='hidden' name='username' placeholder='Username' value={user.username}/>
+          <input type='hidden' name='username' placeholder='Username' value={data.username}/>
           <input type='text' name='title' placeholder='Title' minLength='5' maxLength='25' autoFocus autoComplete='off' defaultValue={ edit ? post.title : ''} required={!edit}/>
           <input type='text' name='description' placeholder='Short description' maxLength='140' autoComplete='off' defaultValue={ edit ? post.description : ''}/>
           <label className='file-select'>

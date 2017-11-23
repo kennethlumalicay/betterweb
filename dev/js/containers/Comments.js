@@ -175,7 +175,7 @@ class Comments extends Component {
             delete={this.props.deleteComment}
           >
             <Comment
-              owner={user.uid === e.uid}
+              deletePermission={user.uid === e.uid || user.mod || user.admin}
               diff={diff}
               commentHtml={commentHtml}
               comment={{...e}}/>

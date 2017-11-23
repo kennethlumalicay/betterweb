@@ -4,7 +4,7 @@ import { oneTag, getTagColor } from './../config/usertags.js';
 
 export default (props) => (
   <div className='comment'>
-    { props.owner
+    { props.deletePermission
       ? <div className='buttonHolder'><button className='actionButton trash' onClick={() => props.delete(props.comment)}><i className='fa fa-trash-o' aria-hidden='true'></i></button></div>
       : null }
     { props.diff
