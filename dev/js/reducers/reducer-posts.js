@@ -65,6 +65,32 @@ export default function (state = initialState, action) {
         ...state,
         items: [...payload.posts]
       };
+    case 'ADDED_COMMENT':
+      return {
+        ...state,
+        items: [...state.items.map(e => {
+          if(e.pid === payload.pid) {
+            return {
+              ...e,
+              commentCount: e.commentCount + 1
+            };
+          }
+          return e;
+        })]
+      };
+    case 'DELETED_COMMENT':
+      return {
+        ...state,
+        items: [...state.items.map(e => {
+          if(e.pid === payload.pid) {
+            return {
+              ...e,
+              commentCount: e.commentCount - 1
+            };
+          }
+          return e;
+        })]
+      };
   }
   return state;
 }

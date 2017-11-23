@@ -155,7 +155,7 @@ export function deleteComment(query) {
       params: query
     })
       .then(() => {
-        dispatch({ type: 'server/DELETED_COMMENT', payload: query.cid });
+        dispatch({ type: 'server/DELETED_COMMENT', payload: query });
       })
       .catch(() => {
         dispatch({ type: 'FAILED_DELETE_COMMENT' });
