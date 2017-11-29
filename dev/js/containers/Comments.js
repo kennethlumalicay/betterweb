@@ -29,8 +29,33 @@ var md = require('markdown-it')({
     return '<span class="emoji emoji_"' + token[idx].markup + '></span>';
   }
 });
-
 md.use(emoji);
+
+// https://github.com/markdown-it/markdown-it/blob/master/docs/architecture.md#renderer
+// Remember old renderer, if overriden, or proxy to default renderer
+var defaultRender = md.renderer.rules.link_open || function(tokens, idx, options, env, self) {
+  return self.renderToken(tokens, idx, options);
+};
+
+md.renderer.rules.link_open = function (tokens, idx, options, env, self) {
+  // If you are sure other plugins can't add `target` - drop check below
+  const tIndex = tokens[idx].attrIndex('target');
+  const rIndex = tokens[idx].attrIndex('rel');
+
+  if (tIndex < 0) {
+    tokens[idx].attrPush(['target', '_blank']); // add new attribute
+  } else {
+    tokens[idx].attrs[tIndex][1] = '_blank'; // replace value of existing attr
+  }
+  if (rIndex < 0) {
+    tokens[idx].attrPush(['rel', 'noopener noreferrer']); // add new attribute
+  } else {
+    tokens[idx].attrs[rIndex][1] = 'noopener noreferrer'; // replace value of existing attr
+  }
+
+  // pass token to default renderer.
+  return defaultRender(tokens, idx, options, env, self);
+};
 
 @connect(
   state => ({
