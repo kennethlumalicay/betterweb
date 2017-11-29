@@ -2,10 +2,14 @@ import React from 'react'; // eslint-disable-line
 
 export const usertags = [
   { tag: 'User', color: '#48E5C2' },
-  { tag: 'Owner', color: '#61E786' },
+  { tag: 'Business Owner', color: '#61E786' },
   { tag: 'Hobbyist', color: '#087E8B' },
+  { tag: 'Blogger', color: '#EDFFEC' },
+  { tag: 'Writer', color: '#9792E3' },
+  { tag: 'Photographer', color: '#ADE25D' },
+  { tag: 'Artist', color: '#F49D6E' },
   { tag: 'Front End', color: '#2176FF' },
-  { tag: 'Back End', color: '#AC3931' },
+  { tag: 'Back End', color: '#DD403A' },
   { tag: 'Full Stack', color: '#F79824' },
   { tag: 'Designer', color: '#FDCA40' },
   { tag: 'Bot', color: '#eee', hidden: true }
