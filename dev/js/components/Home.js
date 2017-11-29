@@ -12,6 +12,7 @@ class Home extends Component {
             <p>Users and developers should team up to make the web a better place.</p>
             <p>Developers can post their work to be discussed by other developers and users. Use that to help improve your work!</p>
             <p>All kinds of users are welcome and encouraged to participate! You don't need an account to get started.</p>
+            <p>Press <i className='fa fa-globe' aria-hidden='true'></i> to visit website and <i className='fa fa-commenting' aria-hidden='true'></i> to join discussion.</p>
           </div>
         </div>
         <Posts />

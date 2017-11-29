@@ -511,7 +511,7 @@ h1, h2, h3, h4, h5, h6 {
     width: 0.5rem;
 }
 *::-webkit-scrollbar-track {
-  background-color: rgba(0,0,0,0);
+  background-color: #555;
 }
 *::-webkit-scrollbar-thumb {
   background-color: #eee;
@@ -1109,16 +1109,16 @@ input {
 .post-links {
   display: -webkit-box;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-          flex-direction: column;
+  justify-content: center;
+  margin: auto auto 0 auto;
 }
 .post-links > a {
-  color: #eee;
-  padding: 0.5rem 1rem;
-  margin: 0.2rem auto 0.2rem 0;
-  border: 0.1rem solid #333;
+  color: #ccc;
+  padding: 0.5rem 0.7rem;
   transition: all 0.25s ease-in-out;
+}
+.post-links > a > i {
+  font-size: 1.2rem;
 }
 .post-links > a:hover {
   background-color: #555;
@@ -1138,7 +1138,6 @@ input {
   text-transform: capitalize;
 }
 .post > h3 {
-  margin-top: auto;
 }
 .post > h3 > label {
   display: inline-block;

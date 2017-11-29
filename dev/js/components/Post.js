@@ -7,7 +7,7 @@ export default (props) => (
     { props.deletePermission
       ? (
         <div className='buttonHolder'>
-          <button className='actionButton trash' onClick={props.delete}><i className="fa fa-trash-o" aria-hidden="true"></i></button>
+          <button className='actionButton trash' onClick={props.delete}><i className='fa fa-trash-o' aria-hidden='true'></i></button>
           { props.editable
             ? <button className='actionButton edit' onClick={props.edit}><i className='fa fa-pencil-square-o' aria-hidden='true'></i></button>
             : null }
@@ -19,13 +19,13 @@ export default (props) => (
     <p>{props.post.description}</p>
     <div className='post-links'>
       { props.post.liveLink
-        ? <a href={props.post.liveLink} target='_blank' rel='noopener noreferrer'>Visit Website</a>
+        ? <a href={props.post.liveLink} target='_blank' rel='noopener noreferrer'><i className='fa fa-globe' aria-hidden='true'></i></a>
         : null }
       { props.post.githubLink
-        ? <a href={props.post.githubLink} target='_blank' rel='noopener noreferrer'>Github Repo</a>
+        ? <a href={props.post.githubLink} target='_blank' rel='noopener noreferrer'><i className='fa fa-github' aria-hidden='true'></i></a>
         : null }
       { !props.page
-        ? <Link to={'/post/' + props.post.pid}>Discussion <sup>{props.post.commentCount || ''}</sup></Link>
+        ? <Link to={'/post/' + props.post.pid}><i className='fa fa-commenting' aria-hidden='true'></i> <sup>{props.post.commentCount || ''}</sup></Link>
         : null }
     </div>
     <h3>
