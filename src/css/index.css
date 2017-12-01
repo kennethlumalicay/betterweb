@@ -1014,6 +1014,7 @@ input {
   padding: 0 0.5rem;
 }
 .post {
+  position: relative;
   border-radius: 2px;
   margin: 0.5rem 0.5%;
   display: -webkit-box;
@@ -1448,6 +1449,8 @@ input {
 }
 .buttonHolder {
   position: absolute;
+  right: 0;
+  top: 0;
   z-index: 5;
   margin: 0.1rem auto auto 0.1rem;
 }
@@ -1474,8 +1477,6 @@ input {
   color: #333;
 }
 .comment .buttonHolder {
-  right: 0;
-  top: 0;
   margin: 0;
 }
 .comment .trash {
