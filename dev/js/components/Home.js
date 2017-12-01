@@ -14,7 +14,7 @@ class Home extends Component {
         <div className='splash'>
           <div>
             <h1>Help make the web a better place</h1>
-            <p>Netizens should unite to make the web a better place.</p>
+            <p>The online community should unite to make the web a better place.</p>
             <p>Post your website and get feedback from other user, owner or developers to help improve the quality of your website!</p>
             <p>From school / personal project to business web app just post them.</p>
             <p>All kinds of users are welcome and encouraged to participate! You don't need an account to get started.</p>

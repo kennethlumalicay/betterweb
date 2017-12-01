@@ -67,7 +67,7 @@ export default function (state = initialState, action) {
         remove: true
       };
     */
-    case 'ADDED_POST':
+    case 'ADDED_POST_NOTIF':
       return {
         items: [...state.items, {
           msg: 'Added post',

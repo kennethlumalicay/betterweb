@@ -75,6 +75,7 @@ export function addPost(form) {
     })
       .then(res => {
         dispatch({ type: 'server/ADDED_POST', payload: res.data });
+        dispatch({ type: 'ADDED_POST_NOTIF' });
       })
       .catch(() => {
         dispatch({ type: 'FAILED_ADD_POST' });
