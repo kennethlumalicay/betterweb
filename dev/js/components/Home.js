@@ -4,8 +4,8 @@ import Posts from './../containers/Posts.js';
 class Home extends Component {
 
   componentDidMount() {
-    document.title = 'BetterWeb';
-    document.description = 'Help developers make the web a better place by sharing your thoughts.';
+    document.title = 'BetterWeb: Get feedback to improve your site or app\'s quality';
+    document.description = 'Help website owners make the web a better place by sharing your thoughts.';
   }
 
   render() {
