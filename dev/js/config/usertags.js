@@ -23,7 +23,7 @@ export const mappedTags = (checked) => usertags.map((e,i) => e.hidden ? null : (
 ));
 
 export const oneTag = (user, disabled) => {
-  const { tag, color } = usertags.filter(e => e.tag === (user || 'User'))[0];
+  const { tag, color } = usertags.filter(e => e.tag === (user || 'User'))[0] || usertags[0];
   return (
     <label className='usertag' style={{backgroundColor: color}}>
       <input type='radio' name='usertag' value={tag} defaultChecked={!disabled} disabled={disabled}/>
@@ -33,5 +33,6 @@ export const oneTag = (user, disabled) => {
 };
 
 export const getTagColor = (tag) => {
-  return usertags.filter(e => e.tag === tag)[0].color;
+  const usertag = usertags.filter(e => e.tag === tag)[0];
+  return usertag ? usertag.color : usertags[0].color;
 };
