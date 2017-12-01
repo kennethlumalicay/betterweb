@@ -1013,7 +1013,6 @@ input {
   padding: 0 0.5rem;
 }
 .post {
-  padding: 0.5rem 0.5rem;
   border-radius: 2px;
   margin: 0.5rem 0.5%;
   display: -webkit-box;
@@ -1023,17 +1022,12 @@ input {
           flex-direction: column;
   -webkit-box-pack: start;
           justify-content: flex-start;
-  width: 98%;
+  width: 99%;
   background-color: #444;
   color: #aaa;
   font-size: 0.9rem;
   word-wrap: break-word;
   transition: all 0.5s ease-in-out;
-}
-.post > img {
-  margin: 0 auto;
-  max-width: 100%;
-  max-height: 20rem;
 }
 .post-img {
   height: 8rem;
@@ -1052,8 +1046,7 @@ input {
 }
 @media screen and (min-width: 550px) {
   .post {
-    width: 47%;
-    padding: 0.5rem 1%;
+    width: 48%;
   }
   .post-img {
     height: 8rem;
@@ -1066,8 +1059,7 @@ input {
 }
 @media screen and (min-width: 1024px) {
   .post {
-    width: 31.33%;
-    padding: 0.5rem 0.5%;
+    width: 32.33%;
   }
   .post-img {
     height: 8rem;
@@ -1075,7 +1067,7 @@ input {
 }
 @media screen and (min-width: 1280px) {
   .post {
-    width: 23%;
+    width: 24%;
   }
   .post-img {
     height: 8rem;
@@ -1083,10 +1075,15 @@ input {
 }
 @media screen and (min-width: 1900px) {
   .post {
-    width: 18%;
+    width: 19%;
   }
   .post-img {
     height: 8rem;
+  }
+}
+@media screen and (min-width: 2560px) {
+  .post-img {
+    height: 10rem;
   }
 }
 .post-enter {
@@ -1109,6 +1106,12 @@ input {
   -webkit-transform: scale(0.8);
           transform: scale(0.8);
 }
+.post-content {
+  padding: 0.2rem 0.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
 .post-links {
   display: -webkit-box;
   display: flex;
@@ -1126,31 +1129,31 @@ input {
 .post-links > a:hover {
   background-color: #555;
 }
-.post > h2, .post > h3 {
+.post-content > h2, .post-content > h3 {
   font-size: inherit;
 }
-.post > h2 {
+.post-content > h2 {
   margin: 0.5rem 0;
   color: #ccc;
 }
-.post > p {
+.post-content > p {
   margin: 0 0 0.5rem 0;
   padding: 0;
 }
-.post > h2:first-letter, .post > p:first-letter {
+.post-content > h2:first-letter, .post-content > p:first-letter {
   text-transform: capitalize;
 }
-.post > h3 {
+.post-content > h3 {
+  font-weight: 400;
 }
-.post > h3 > label {
+.post-content > h3 > label {
   display: inline-block;
 }
-.post > h3 > a {
+.post-content > h3 > a {
   color: #aaa;
-  font-weight: 400;
   transition: all 0.25s ease-in-out;
 }
-.post > h3 > a:hover {
+.post-content > h3 > a:hover {
   color: #ccc;
 }
 /* xx POSTS END xx */
