@@ -102,7 +102,8 @@ class Posts extends Component {
   }
 
   render() {
-    if(this.props.posts.fetching || !this.props.posts.items) {
+    const { user, posts } = this.props;
+    if(posts.fetching || !posts.items) {
       return (
         <section id='posts'>
           <div className='fetching'>
@@ -112,7 +113,7 @@ class Posts extends Component {
       );
     }
 
-    if(this.props.posts.failedFetch) {
+    if(posts.failedFetch) {
       return (
         <section id='posts'>
           <div className='not-found'>
@@ -124,7 +125,6 @@ class Posts extends Component {
       );
     }
 
-    const { user } = this.props;
     const byUid = this.filterByUid(this.props.posts.items);
     const byDate = this.filterByDate(byUid);
     const bySearch = this.filterBySearch(byDate);

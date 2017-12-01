@@ -4,7 +4,7 @@ import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
 import NewPost from './PostSubmit.js';
 import Settings from './Settings.js';
-import Login from './../components/Login.js';
+import Login from './../containers/Login.js';
 
 @connect(
   state => ({

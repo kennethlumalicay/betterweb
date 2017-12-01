@@ -23,6 +23,12 @@ module.exports = function (app, passport, upload) {
       });
     });
 
+  app.route('/api/fetchUsers')
+    .get(function (req, res) {
+      console.log(req.query);
+      userApi.fetchUsers(req.query, (docs) => res.send(docs));
+    });
+
   app.route('/api/fetchUser')
     .get(function (req, res) {
       userApi.fetchUser(req.query, (docs) => res.send(docs));

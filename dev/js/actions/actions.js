@@ -1,5 +1,21 @@
 import axios from 'axios';
 
+export function fetchUsers() {
+  return (dispatch) => {
+    dispatch({ type: 'USERS_FETCHING' });
+    axios({
+      url: '/api/fetchUsers'
+    })
+      .then(res => {
+        dispatch({ type: 'USERS_FETCHED', payload: res.data });
+      })
+      .catch(err => {
+        if(err) throw err;
+        dispatch({ type: 'FAILED_USERS_FETCH' });
+      });
+  };
+}
+
 export function updateUser(query) {
   return (dispatch) => {
     axios({

@@ -2,16 +2,16 @@ import User from '../models/user.js';
 import { updateAllUserPost } from './postApi.js';
 
 export const fetchUsers = (query, cb) => {
-  User.find({}, (err, res) => {
+  User.find({}, (err, users) => {
     if(err) throw err;
-    cb(res);
+    cb(users);
   });
 };
 
 export const fetchUser = (query, cb) => {
-  User.findOne({ uid: query[0] }, (err, res) => {
+  User.findOne({ uid: query[0] }, (err, user) => {
     if(err) throw err;
-    cb(res);
+    cb(user);
   });
 };
 

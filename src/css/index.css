@@ -820,6 +820,9 @@ input {
   width: 1px;
   z-index: -1;
 }
+.taken {
+  background-color: #E4572E !important;
+}
 /* x FORM END x */
 /* xx MODALS END xx */
 /* xx NAV END xx */
