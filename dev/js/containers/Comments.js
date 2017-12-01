@@ -186,7 +186,7 @@ class Comments extends Component {
           />
         </CSSTransition>
       )
-      : postComments.map((e) => {
+      : postComments.sort((a,b) => a.timestamp - b.timestamp).map((e) => {
         const commentHtml = {
           __html: md.render(e.comment)
         };
