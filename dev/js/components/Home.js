@@ -3,6 +3,11 @@ import Posts from './../containers/Posts.js';
 
 class Home extends Component {
 
+  componentDidMount() {
+    document.title = 'BetterWeb';
+    document.description = 'Help developers make the web a better place by sharing your thoughts.';
+  }
+
   render() {
     return (
       <section id='home'>

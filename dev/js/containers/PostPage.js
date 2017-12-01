@@ -34,9 +34,10 @@ class PostPage extends Component {
   }
 
   componentWillReceiveProps(next) {
+    const post = this.getPost(next);
     this.setState({
       pid: next.match.params.pid,
-      post: this.getPost(next),
+      post: post,
       checked: true
     });
   }
@@ -45,10 +46,13 @@ class PostPage extends Component {
     if(!this.props.posts.items.length) {
       this.props.fetchOnePost(this.state.pid);
     }
+    const post = this.getPost(this.props);
     this.setState({
-      post: this.getPost(this.props),
+      post: post,
       checked: true
     });
+    document.title = post.title + ' | BetterWeb';
+    document.description = post.description;
   }
 
   openEditPost() {

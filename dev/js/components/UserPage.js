@@ -31,10 +31,13 @@ class UserPage extends Component {
         params: uid
       })
         .then(res => {
+          const user = res.data;
           this.setState({
-            user: res.data,
+            user: user,
             fetching: false
           });
+          document.title = user.username + ' | BetterWeb';
+          document.description = 'See ' + user.username + '\'s work and share your thoughts.';
         })
         .catch((err) => {
           if(err) throw(err);
