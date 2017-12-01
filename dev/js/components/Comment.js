@@ -4,9 +4,6 @@ import { oneTag, getTagColor } from './../config/usertags.js';
 
 export default (props) => (
   <div className='comment'>
-    { props.deletePermission
-      ? <div className='buttonHolder'><button className='actionButton trash' onClick={() => props.delete(props.comment)}><i className='fa fa-trash-o' aria-hidden='true'></i></button></div>
-      : null }
     { props.diff
       ? (
         <div className='commentUser'>
@@ -20,5 +17,8 @@ export default (props) => (
     { props.bot
       ? <div className='innerhtml'>{props.comment.comment}</div>
       : <div className='innerhtml' dangerouslySetInnerHTML={props.commentHtml}/> }
+    { props.deletePermission
+      ? <div className='buttonHolder'><button className='actionButton trash' onClick={() => props.delete(props.comment)}><i className='fa fa-trash-o' aria-hidden='true'></i></button></div>
+      : null }
   </div>
 );

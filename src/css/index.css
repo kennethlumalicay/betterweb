@@ -1271,6 +1271,7 @@ input {
   word-wrap: break-word;
 }
 .comment {
+  position: relative;
   display: -webkit-box;
   display: flex;
   -webkit-box-orient: vertical;
@@ -1473,7 +1474,9 @@ input {
   color: #333;
 }
 .comment .buttonHolder {
-  margin-right: 1.5rem;
+  right: 0;
+  top: 0;
+  margin: 0;
 }
 .comment .trash {
   font-size: 1rem;
