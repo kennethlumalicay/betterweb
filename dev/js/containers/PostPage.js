@@ -47,12 +47,14 @@ class PostPage extends Component {
       this.props.fetchOnePost(this.state.pid);
     }
     const post = this.getPost(this.props);
-    this.setState({
-      post: post,
-      checked: true
-    });
-    document.title = post.title + ' | BetterWeb';
-    document.description = post.description;
+    if(post) {
+      this.setState({
+        post: post,
+        checked: true
+      });
+      document.title = post.title + ' | BetterWeb';
+      document.description = post.description;
+    }
   }
 
   openEditPost() {
@@ -67,8 +69,8 @@ class PostPage extends Component {
     });
   }
 
-  getPost(next) {
-    return next.posts.items && next.posts.items.filter(e => e.pid === next.match.params.pid)[0];
+  getPost(props) {
+    return props.posts.items && props.posts.items.filter(e => e.pid === props.match.params.pid)[0];
   }
 
   render() {

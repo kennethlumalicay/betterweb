@@ -569,7 +569,7 @@ input {
   left: 0;
   right: 0;
   padding: 0 1rem;
-  background-color: #333;
+  background: linear-gradient(rgba(51,51,51,1), rgba(51,51,51,0.9));
   height: 4rem;
 }
 #nav + section {
@@ -609,7 +609,6 @@ input {
   top: 0;
   right: 0;
   z-index: -1;
-  background-color: #333;
   -webkit-animation: 0.5s slide-down ease-in-out;
           animation: 0.5s slide-down ease-in-out;
 }
@@ -627,6 +626,7 @@ input {
   list-style: none;
   padding: 0 0 2px 2px;
   margin: 0;
+  background-color: rgba(51,51,51,0.9);
 }
 .menu > ul > li {
   display: -webkit-box;
@@ -660,6 +660,7 @@ input {
     -webkit-box-direction: normal;
             flex-direction: row;
     padding-left: 0;
+    background: none;
   }
   .menu > ul > li > a {
     display: -webkit-box;
@@ -835,19 +836,19 @@ input {
   min-height: 30vh;
   display: -webkit-box;
   display: flex;
-  background-image: url('../img/splash-bg-768.jpg');
+  background-image: url('../img/splash-bg2-768.jpg');
   background-size: cover;
   background-position: center;
   padding: 2rem 0;
 }
 @media screen and (min-width: 768px) {
   .splash {
-    background-image: url('../img/splash-bg-1440.jpg');
+    background-image: url('../img/splash-bg2-1440.jpg');
   }
 }
 @media screen and (min-width: 1440px) {
   .splash {
-    background-image: url('../img/splash-bg-2560.jpg');
+    background-image: url('../img/splash-bg2-2560.jpg');
   }
 }
 .splash > div {
@@ -1033,6 +1034,10 @@ input {
   height: 8rem;
   background-position: center;
   background-size: cover;
+  transition: filter 0.5s ease-in-out;
+}
+.post-img:hover {
+  filter: brightness(0.8);
 }
 @media screen and (min-width: 375px) {
   .post-img {
@@ -1441,17 +1446,18 @@ input {
   color: #aaa;
 }
 .buttonHolder {
-  margin-left: auto;
-  margin-right: 1.6rem;
+  position: absolute;
+  z-index: 5;
+  margin: 0.1rem auto auto 0.1rem;
 }
 .actionButton {
-  position: absolute;
+  margin: 0 0.1rem;
   font-size: 1.2rem;
   -webkit-transform: scale(0);
           transform: scale(0);
   opacity: 0;
   border-radius: 50%;
-  background-color: #777;
+  background-color: rgba(119,119,119,0.9);
   border: 2px solid #333;
   transition: all 0.25s ease-in-out;
 }
@@ -1463,7 +1469,6 @@ input {
   color: #540804;
 }
 .edit {
-  margin-top: 2rem;
   padding: 0.1rem 0.2rem;
   color: #333;
 }
