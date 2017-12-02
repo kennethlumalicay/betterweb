@@ -26,20 +26,23 @@ This is an online community where you could share your thoughts and help improve
 * AWS S3
 * Local Passport
 
-## Todo:
-* image compression
-* socket for user update
-* more user information
-* user email verification
-* user verified badge
-* more info on user page
-* karma system
-* comment update shouldn't cause rerender on other sockets
-* edit comment
-* scrollToBottom on new comment if scrolled down
-* notification on nav
-* notification on owned posts
-* notification on replied posts?
-* github, twitter and facebook passport
-* tests
-* code cleanup
+## Todo
+### High priority:
+* Image compression
+* Socket for user update
+* More user information stored
+* More user information displayed on userpage
+* Karma system
+* Show notification button on nav
+* Tests
+
+### Mid priority:
+* User email verification
+* User verified badge
+* Comment update shouldn't cause rerender on other sockets
+* Edit comment
+* ScrollToBottom on new comment if scrolled all the way down
+* Notification on owned posts
+* Notification on replied posts?
+* Github, twitter and facebook passport
+* Code cleanup
