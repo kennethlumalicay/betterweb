@@ -63,7 +63,7 @@ class Settings extends Component {
   }
 
   checkIfTaken(list, item, prop) {
-    return list.map(e => e[prop] || null).find(v => v === item && v !== this.props.user[prop]);
+    return list.map(e => e[prop] || null).find(v => v.toLowerCase() === item.toLowerCase() && v.toLowerCase() !== this.props.user[prop].toLowerCase());
   }
 
   handleUser(e) {

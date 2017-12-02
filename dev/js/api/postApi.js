@@ -82,7 +82,7 @@ export const deletePost = (query, cb) => {
 
 export const upvotePost = (query, cb) => {
   Post.updateOne({ pid: query.pid }
-    , { $inc: { ups: 1 }, $push: { voted: query.uid }}
+    , { $inc: { ups: 1 }, $push: { voted: query.user }}
     , null
     , err => {
       if(err) throw err;

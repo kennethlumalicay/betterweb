@@ -42,7 +42,7 @@ class Login extends Component {
   }
 
   checkIfTaken(list, item, prop) {
-    return list.map(e => e[prop] || null).find(v => v === item);
+    return list.map(e => e[prop] || null).find(v => v.toLowerCase() === item.toLowerCase());
   }
 
   handleUser(e) {
