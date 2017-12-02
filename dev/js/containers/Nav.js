@@ -103,10 +103,9 @@ class Nav extends Component {
     const newPostButton = <OpenLinkModal openModal={() => this.openNewPost()}>New+</OpenLinkModal>;
     const settingsButton = (
       <OpenLinkModal openModal={() => this.openSettings()}>
-        {/* <img src={'/src/img/' + user.uid + '.png'} alt='Me'/> */}
         { user.guest
-          ? <span>Settings</span>
-          : <span>Me [{user.ups}]</span> }
+          ? <div>Settings</div>
+          : <div>Me <span className='ups-display'><i className='fa fa-star-o' aria-hidden='true'></i> {user.ups}</span></div> }
       </OpenLinkModal>
     );
 

@@ -28,11 +28,10 @@ This is an online community where you could share your thoughts and help improve
 
 ## Todo
 ### High priority:
-* Image compression
-* Socket for user update
+* Image compression on upload
 * More user information stored
 * More user information displayed on userpage
-* Karma system
+* Comment karma system
 * Show notification button on nav
 * Tests
 
@@ -46,3 +45,8 @@ This is an online community where you could share your thoughts and help improve
 * Notification on replied posts?
 * Github, twitter and facebook passport
 * Code cleanup
+
+### Low priority:
+* Theme picker
+* Posts pagination
+* Socket for user update

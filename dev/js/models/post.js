@@ -14,6 +14,7 @@ var Post = new Schema({
   githubLink: String,
   timestamp: Number,
   ups: Number,
+  voted: [String],
   guest: Boolean,
   locked: Boolean,
   commentCount: Number

@@ -116,6 +116,25 @@ export function deletePost(post) {
   };
 }
 
+export function upvotePost(post, user) {
+  return(dispatch) => {
+    axios({
+      method: 'get',
+      url: '/api/upvotePost',
+      params: {
+        ...post,
+        user: user.uid
+      }
+    })
+      .then(() => {
+        dispatch({ type: 'server/UPVOTED_POST', payload: { ...post, user: user.uid } });
+      })
+      .catch(() => {
+        dispatch({ type: 'FAILED_UPVOTE_POST' });
+      });
+  }
+}
+
 export function fetchComments() {
   return (dispatch) => {
     dispatch({ type: 'FETCHING_COMMENTS' });

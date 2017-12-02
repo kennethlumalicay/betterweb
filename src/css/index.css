@@ -1124,13 +1124,16 @@ input {
   justify-content: center;
   margin: auto auto 0 auto;
 }
-.post-links > a {
+.post-links > a, .post-links > button {
   color: #ccc;
   padding: 0.5rem 0.7rem;
   transition: all 0.25s ease-in-out;
 }
-.post-links > a > i {
+.post-links > * > i {
   font-size: 1.2rem;
+}
+.fa-star-o {
+  color: salmon;
 }
 .post-links > a:hover {
   background-color: #555;
@@ -1413,6 +1416,7 @@ input {
   align-self: center;
 }
 #profile > h1 {
+  font-family: 'Montserrat';
   color: #aaa;
 }
 /* xx USER PAGE END xx */
@@ -1488,6 +1492,9 @@ input {
   -webkit-transform: scale(1);
           transform: scale(1);
   opacity: 1;
+}
+.ups-display {
+  font-weight: 400;
 }
 /* xx MISC END xx */
 /* -- FOOTER -- */

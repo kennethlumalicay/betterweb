@@ -1,7 +1,7 @@
 import React, { Component } from 'react'; // eslint-disable-line
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchPosts, deletePost } from './../actions/actions.js';
+import { fetchPosts, deletePost, upvotePost } from './../actions/actions.js';
 import Post from './../components/Post.js';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
@@ -14,7 +14,8 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
   dispatch => ({
     ...bindActionCreators({
       fetchPosts: fetchPosts,
-      deletePost: deletePost
+      deletePost: deletePost,
+      upvotePost: upvotePost
     }, dispatch),
     dispatch: dispatch
   })
@@ -25,7 +26,7 @@ class Posts extends Component {
     super(props);
     this.state = {
       search: '',
-      sort: 'new',
+      sort: 'best',
       dateFilter: '365'
     };
   }
@@ -79,6 +80,7 @@ class Posts extends Component {
       const relevant = posts.map(e => {
         e.relevance = 0;
         e.relevance = (getRelevance(e.title)*3) + (getRelevance(e.username)*3) + getRelevance(e.description);
+        e.relevance += e.relevance > 0 ? e.ups : 0; 
         return e;
       });
       return relevant.filter(e => e.relevance > 0);
@@ -87,22 +89,24 @@ class Posts extends Component {
   }
 
   sortPost(posts) {
+    // sort with timestamp
+    const sort = (arr, prop = 'timestamp', asc = false) => arr.sort((a,b) => (asc ? a[prop] - b[prop] : b[prop] - a[prop]) || b.timestamp - a.timestamp);
     switch(this.state.sort) {
-      case 'best':
-        return posts.sort((a,b) => b.ups - a.ups);
-      case 'relevance':
-        return posts.sort((a,b) => b.relevance - a.relevance);
       case 'new':
-        return posts.sort((a,b) => b.timestamp - a.timestamp);
+        return sort(posts);
+      case 'best':
+        return sort(posts, 'ups');
+      case 'relevance':
+        return sort(posts, 'relevance');
       case 'mostDiscussed':
-        return posts.sort((a,b) => b.commentCount - a.commentCount);
+        return sort(posts, 'commentCount');
       case 'needFeedback':
-        return posts.sort((a,b) => a.commentCount - b.commentCount);
+        return sort(posts, 'commentCount', true);
     }
   }
 
   render() {
-    const { user, posts } = this.props;
+    const { user, posts, deletePost, upvotePost } = this.props;
     if(posts.fetching || !posts.items) {
       return (
         <section id='posts'>
@@ -135,7 +139,7 @@ class Posts extends Component {
         timeout={500}
         classNames='post'
       >
-        <Post post={post} deletePermission={user.uid === post.uid || user.mod || user.admin} delete={() => this.props.deletePost(post)}/>
+        <Post post={post} deletePermission={user.uid === post.uid || user.mod || user.admin} delete={() => deletePost(post)} upsPermission={!user.guest && !post.voted.find(e => e === user.uid)} upvote={() => upvotePost(post, user)}/>
       </CSSTransition>
     ));
 
@@ -145,8 +149,8 @@ class Posts extends Component {
           <input type='text' placeholder='Search' onChange={(e) => this.changeFilter(e)}/>
           <label>
             <select onChange={(e) => this.changeSort(e)}>
-              <option value='new'>Newest</option>
               <option value='best'>Best</option>
+              <option value='new'>New</option>
               <option value='relevance'>Relevance</option>
               <option value='mostDiscussed'>Most Discussed</option>
               <option value='needFeedback'>Need Feedback</option>

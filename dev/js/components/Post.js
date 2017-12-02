@@ -18,7 +18,12 @@ export default (props) => (
       <div className='post-img' style={{backgroundImage: 'url('+props.post.imgLocation+')'}}></div>
     </Link>
     <div className='post-content'>
-      <h2>{props.post.title}</h2>
+      <h2>
+        <span>{props.post.title}</span>
+        { props.post.ups
+          ? <span className='ups-display'> <i className='fa fa-star-o' aria-hidden='true'></i> <span>{props.post.ups}</span></span>
+          : null }
+      </h2>
       <p>{props.post.description}</p>
       <div className='post-links'>
         { props.post.liveLink
@@ -29,6 +34,9 @@ export default (props) => (
           : null }
         { !props.page
           ? <Link to={'/post/' + props.post.pid}><i className='fa fa-commenting' aria-hidden='true'></i> <sup>{props.post.commentCount || ''}</sup></Link>
+          : null }
+        { props.upsPermission
+          ? <button onClick={props.upvote}><i className='fa fa-star-o' aria-hidden='true'></i></button>
           : null }
       </div>
       <h3>

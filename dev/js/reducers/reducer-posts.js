@@ -60,6 +60,11 @@ export default function (state = initialState, action) {
         ...state,
         items: [...removeOne(payload)]
       };
+    case 'UPVOTED_POST':
+      return {
+        ...state,
+        items: [...state.items.map(e => e.pid === payload.pid ? { ...payload, ups: payload.ups + 1, voted: [...payload.voted, payload.user] } : e)]
+      };
     case 'UPDATED_USER':
       return {
         ...state,

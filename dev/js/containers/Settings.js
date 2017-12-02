@@ -120,9 +120,6 @@ class Settings extends Component {
 
     return (
       <section id='settings'>
-        {user.guest
-          ? null
-          : <h3>Ups: [{user.ups}]</h3> }
         <form className='form' onSubmit={(e) => this.updateUser(e)}>
           <input type='hidden' name='uid' value={user.uid}/>
           <input type='text' name='username' placeholder='Username' value={username} onChange={e => this.handleUser(e)} className={userTaken ? 'taken' : ''}/>

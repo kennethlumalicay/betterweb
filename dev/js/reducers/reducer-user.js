@@ -22,6 +22,11 @@ export default function (state = initialState, action) {
       return {
         ...payload
       };
+    case 'UPVOTED_POST':
+      return {
+        ...state,
+        ups: state.uid === payload.uid ? state.ups + 1 : state.ups
+      };
   }
   return state;
 }

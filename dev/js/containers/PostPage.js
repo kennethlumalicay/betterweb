@@ -2,7 +2,7 @@ import React, { Component } from 'react';  // eslint-disable-line
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Modal from 'react-modal';
-import { fetchPosts, fetchOnePost, deletePost } from './../actions/actions.js';
+import { fetchPosts, fetchOnePost, deletePost, upvotePost } from './../actions/actions.js';
 import Post from './../components/Post.js';
 import EditPost from './PostSubmit.js';
 import Comments from './Comments.js';
@@ -16,7 +16,8 @@ import Comments from './Comments.js';
     ...bindActionCreators({
       deletePost: deletePost,
       fetchPosts: fetchPosts,
-      fetchOnePost: fetchOnePost
+      fetchOnePost: fetchOnePost,
+      upvotePost: upvotePost
     }, dispatch),
     dispatch: dispatch
   })
@@ -74,7 +75,7 @@ class PostPage extends Component {
   }
 
   render() {
-    const { user, posts } = this.props;
+    const { user, posts, upvotePost } = this.props;
     const { post, checked, editPostModal } = this.state;
     if(posts.fetching || !posts.items || !checked) {
       return (
@@ -92,7 +93,7 @@ class PostPage extends Component {
     }
     return (
       <section id='postpage'>
-        <Post post={post} page={true} editable={true} deletePermission={user.uid === post.uid || user.mod || user.admin} delete={() => this.props.deletePost(post)} edit={() => this.openEditPost()}/>
+        <Post post={post} page={true} editable={true} deletePermission={user.uid === post.uid || user.mod || user.admin} delete={() => this.props.deletePost(post)} edit={() => this.openEditPost()} upsPermission={!user.guest && !post.voted.find(e => e === user.uid)} upvote={() => upvotePost(post, user)}/>
         <Comments post={post}/>
 
         <Modal className='modal' isOpen={editPostModal} onRequestClose={() => this.closeEditPost()} shouldCloseOnOverlayClick={false}>

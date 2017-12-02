@@ -58,3 +58,15 @@ export const removeUser = (query, cb) => {
     cb(query.id);
   });
 };
+
+export const upvoteUser = (item, cb) => {
+  User.updateOne({ uid: item.uid }
+    , { $inc: { ups: 1 } }
+    , null
+    , err => {
+      if(err) throw err;
+      delete item.user;
+      cb(item);
+    }
+  );
+}

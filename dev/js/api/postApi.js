@@ -1,6 +1,7 @@
 import Post from './../models/post.js';
 import aws from 'aws-sdk';
 import { updateAllUserComments, deletePostComments } from './commentApi.js';
+import { upvoteUser } from './userApi.js';
 
 const s3 = new aws.S3();
 
@@ -32,6 +33,7 @@ export const addPost = (query, cb) => {
     githubLink: query.githubLink,
     timestamp: Date.now(),
     ups: 0,
+    voted: [],
     guest: query.guest,
     locked: false,
     commentCount: 0
@@ -78,11 +80,22 @@ export const deletePost = (query, cb) => {
   });
 };
 
+export const upvotePost = (query, cb) => {
+  Post.updateOne({ pid: query.pid }
+    , { $inc: { ups: 1 }, $push: { voted: query.uid }}
+    , null
+    , err => {
+      if(err) throw err;
+      upvoteUser(query, cb);
+    }
+  );
+};
+
 export const updateAllUserPost = (user, cb) => {
   Post.updateMany({ uid: user.uid }
     , { username: user.username, usertag: user.usertag }
     , null
-    , (err) => {
+    , err => {
       if(err) throw err;
       fetchPosts(null, (posts) => {
         updateAllUserComments({
@@ -97,7 +110,7 @@ export const addCommentCount = (comment, cb) => {
   Post.updateOne({ pid: comment.pid }
     , { $inc: { commentCount: 1 }}
     , null
-    , (err) => {
+    , err => {
       if(err) throw err;
       cb(comment);
     });
@@ -107,7 +120,7 @@ export const minusCommentCount = (comment, cb) => {
   Post.updateOne({ pid: comment.pid }
     , { $inc: { commentCount: -1 }}
     , null
-    , (err) => {
+    , err => {
       if(err) throw err;
       cb(null);
     });

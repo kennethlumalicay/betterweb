@@ -25,7 +25,6 @@ module.exports = function (app, passport, upload) {
 
   app.route('/api/fetchUsers')
     .get(function (req, res) {
-      console.log(req.query);
       userApi.fetchUsers(req.query, (docs) => res.send(docs));
     });
 
@@ -67,6 +66,11 @@ module.exports = function (app, passport, upload) {
   app.route('/api/deletePost')
     .get(function (req, res) {
       postApi.deletePost(req.query, (docs) => res.send(docs));
+    });
+
+  app.route('/api/upvotePost')
+    .get(function (req, res) {
+      postApi.upvotePost(req.query, (docs) => res.send(docs));
     });
 
   app.route('/api/fetchComments')
