@@ -1340,8 +1340,11 @@ input {
   margin: 0.1rem 0;
   padding: 0;
 }
-.innerhtml :only-child {
+.innerhtml :only-child, .innerhtml :first-child {
   margin: 2px 0;
+}
+.innerhtml p, .innerhtml ul, .innerhtml ol, .innerhtml pre {
+  margin: 0.5rem 0;
 }
 .innerhtml a {
   color: #3498db;
@@ -1367,7 +1370,7 @@ input {
   background: none;
 }
 .innerhtml blockquote {
-  margin: 0 0 0 0.5rem;
+  margin: 0.5rem 0 0.5rem 0.5rem;
   padding: 0.2rem 0 0.2rem 0.5rem;
   border-left: 0.5rem solid #999;
   line-height: 1.5rem;
