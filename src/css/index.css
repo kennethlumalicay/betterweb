@@ -1132,11 +1132,11 @@ input {
 .post-links > * > i {
   font-size: 1.2rem;
 }
+.post-links > *:hover {
+  background-color: #555;
+}
 .fa-star-o {
   color: salmon;
-}
-.post-links > a:hover {
-  background-color: #555;
 }
 .post-content > h2, .post-content > h3 {
   font-size: inherit;
