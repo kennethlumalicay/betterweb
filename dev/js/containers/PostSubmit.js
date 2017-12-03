@@ -21,8 +21,32 @@ class PostSubmit extends Component {
 
   submitPost(event) {
     event.preventDefault();
-    const { dispatch, posts, closeModal, addPost, edit, editPost, post } = this.props;
+    const { dispatch, posts, closeModal, addPost, edit, editPost, post, user } = this.props;
+    const data = edit ? post : user;
     const { target } = event;
+    let hidden = {
+      uid: data.uid,
+      usertag: data.usertag,
+      guest: data.guest,
+      username: data.username
+    }
+
+    if(edit) {
+      hidden = {
+        ...hidden,
+        img: data.img,
+        pid: data.pid
+      }
+    }
+
+          /*<input type='hidden' name='uid' value={data.uid}/>
+          <input type='hidden' name='usertag' value={data.usertag}/>
+          <input type='hidden' name='guest' value={data.guest}/>
+          { edit
+            ? [<input key='img' type='hidden' name='img' value={post.img}/>,
+              <input key='pid' type='hidden' name='pid' value={post.pid}/>]
+            : null }
+          <input type='hidden' name='username' placeholder='Username' value={data.username}/>*/
 
     // file checks
     const file = edit ? target.newImg.files : target.img.files;
@@ -63,7 +87,7 @@ class PostSubmit extends Component {
     }
 
     // check if the same link has been posted by the user within a day
-    const uid = target.uid.value;
+    const uid = data.uid;
     const dupe = posts.items.filter(e => e.uid === uid && e.liveLink === live && e.timestamp - Date.now() < 24*1000*60*60);
     if(dupe.length && (edit ? post.liveLink !== live : true)) {
       dispatch({ type: 'SPAM' });
@@ -72,10 +96,10 @@ class PostSubmit extends Component {
 
     closeModal();
     if(edit) {
-      editPost(target);
+      editPost(target, hidden);
       return false;
     }
-    addPost(target);
+    addPost(target, hidden);
   }
 
   render() {
@@ -85,14 +109,6 @@ class PostSubmit extends Component {
     return (
       <section id='postsubmit'>
         <form className='form' onSubmit={(e) => this.submitPost(e)}>
-          <input type='hidden' name='uid' value={data.uid}/>
-          <input type='hidden' name='usertag' value={data.usertag}/>
-          <input type='hidden' name='guest' value={data.guest}/>
-          { edit
-            ? [<input key='img' type='hidden' name='img' value={post.img}/>,
-              <input key='pid' type='hidden' name='pid' value={post.pid}/>]
-            : null }
-          <input type='hidden' name='username' placeholder='Username' value={data.username}/>
           <input type='text' name='title' placeholder='Title' minLength='5' maxLength='25' autoFocus autoComplete='off' defaultValue={ edit ? post.title : ''} required={!edit}/>
           <input type='text' name='description' placeholder='Short description' maxLength='140' autoComplete='off' defaultValue={ edit ? post.description : ''}/>
           <label className='file-select'>

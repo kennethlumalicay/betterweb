@@ -142,6 +142,7 @@ class Comments extends Component {
 
   submit(target) {
     const textarea = target.comment;
+    const { post, user } = this.props;
 
     // clear if there's no text
     if(!textarea.value.trim().length) {
@@ -149,12 +150,15 @@ class Comments extends Component {
       textarea.value = '';
       return false;
     }
-
-    const inputs = ['uid', 'username', 'usertag', 'guest', 'pid', 'comment'];
-    let query = {};
-    inputs.forEach(e => {
-      query = { ...query, [e]: target[e].value };
-    });
+    
+    let query = {
+      uid: user.uid,
+      username: user.username,
+      usertag: user.usertag,
+      guest: user.guest,
+      pid: post.pid,
+      comment: textarea.value.trim()
+    };
     this.props.addComment(query);
     textarea.value = '';
     this.setState({
@@ -225,11 +229,6 @@ class Comments extends Component {
           ? null
           : (
             <form onSubmit={(e) => this.handleComment(e)}>
-              <input type='hidden' name='uid' value={user.uid}/>
-              <input type='hidden' name='username' value={user.username}/>
-              <input type='hidden' name='usertag' value={user.usertag}/>
-              <input type='hidden' name='guest' value={user.guest}/>
-              <input type='hidden' name='pid' value={post.pid}/>
               <textarea
                 autoComplete='off'
                 autoFocus='true'

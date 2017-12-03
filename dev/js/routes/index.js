@@ -50,7 +50,7 @@ module.exports = function (app, passport, upload) {
 
   app.route('/api/addPost')
     .post(upload.single('img'), function (req, res) {
-      postApi.addPost({...req.body, img: req.file.key, imgLocation: req.file.location}, (docs) => res.send(docs));
+      postApi.addPost({...req.body, ...req.query, img: req.file.key, imgLocation: req.file.location}, (docs) => res.send(docs));
     });
 
   app.route('/api/editPost')
@@ -60,7 +60,7 @@ module.exports = function (app, passport, upload) {
         newImg: req.file.key,
         newImgLocation: req.file.location
       };
-      postApi.editPost({...req.body, ...newImg}, (docs) => res.send(docs));
+      postApi.editPost({...req.body, ...req.query, ...newImg}, (docs) => res.send(docs));
     });
 
   app.route('/api/deletePost')

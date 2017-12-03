@@ -42,7 +42,8 @@ class Login extends Component {
   }
 
   checkIfTaken(list, item, prop) {
-    return list.map(e => e[prop] || null).find(v => v.toLowerCase() === item.toLowerCase());
+    const search = new RegExp(`^${item}$`, 'i');
+    return list.map(e => e[prop] || null).find(v => search.test(v));
   }
 
   handleUser(e) {
@@ -135,8 +136,8 @@ class Login extends Component {
           ? <p>Username or password is incorrect.</p>
           : null
         }
-        <form className='form' action={action} method='POST'>
-          <input type='text' name='username' placeholder='Username' value={username} autoFocus required onChange={(e) => this.handleUser(e)} {...usernameProp}/>
+        <form className='form' action={action} method='POST' onSubmit={(e) => emailTaken || userTaken && register ? e.preventDefault() : null}>
+          <input type='text' name='username' placeholder='Username' value={username} maxLength='20' autoFocus required onChange={(e) => this.handleUser(e)} {...usernameProp}/>
           <input type='password' name='password' placeholder='Password' value={password} onChange={e => this.handlePass(e)} required/>
           {form}
           <input type='submit' value={submitText} {...buttonProp}/>

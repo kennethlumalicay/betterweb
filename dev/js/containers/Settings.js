@@ -48,8 +48,8 @@ class Settings extends Component {
       return false;
     }
 
-    const inputs = ['uid', 'username', 'password', 'email', 'usertag'];
-    let query = {};
+    const inputs = ['username', 'password', 'email', 'usertag'];
+    let query = { uid: user.uid };
     inputs.forEach(e => {
       query = { ...query, [e]: event.target[e].value };
     });
@@ -63,7 +63,9 @@ class Settings extends Component {
   }
 
   checkIfTaken(list, item, prop) {
-    return list.map(e => e[prop] || null).find(v => v.toLowerCase() === item.toLowerCase() && v.toLowerCase() !== this.props.user[prop].toLowerCase());
+    const search = new RegExp(`^${item}$`, 'i');
+    const same = new RegExp(`^${this.props.user[prop]}$`, 'i');
+    return list.map(e => e[prop] || null).find(v => search.test(v) && !same.test(v));
   }
 
   handleUser(e) {
@@ -120,9 +122,8 @@ class Settings extends Component {
 
     return (
       <section id='settings'>
-        <form className='form' onSubmit={(e) => this.updateUser(e)}>
-          <input type='hidden' name='uid' value={user.uid}/>
-          <input type='text' name='username' placeholder='Username' value={username} onChange={e => this.handleUser(e)} className={userTaken ? 'taken' : ''}/>
+        <form className='form' onSubmit={(e) => emailTaken || userTaken ? e.preventDefault() : this.updateUser(e)}>
+          <input type='text' name='username' placeholder='Username' value={username} maxLength='20' onChange={e => this.handleUser(e)} className={userTaken ? 'taken' : ''}/>
           {userForm}
           <h3>Your tag</h3>
           <div>

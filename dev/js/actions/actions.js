@@ -65,12 +65,13 @@ export function fetchOnePost(pid) {
   };
 }
 
-export function addPost(form) {
+export function addPost(form, hidden) {
   return (dispatch) => {
     const data = new FormData(form);
     axios({
       method: 'post',
       url: '/api/addPost',
+      params: {...hidden},
       data
     })
       .then(res => {
@@ -83,12 +84,13 @@ export function addPost(form) {
   };
 }
 
-export function editPost(form) {
+export function editPost(form, hidden) {
   return (dispatch) => {
     const data = new FormData(form);
     axios({
       method: 'post',
       url: '/api/editPost',
+      params: {...hidden},
       data
     })
       .then(res => {
