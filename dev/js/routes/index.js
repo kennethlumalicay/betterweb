@@ -64,12 +64,12 @@ module.exports = function (app, passport, upload) {
     });
 
   app.route('/api/deletePost')
-    .get(function (req, res) {
+    .post(function (req, res) {
       postApi.deletePost(req.query, (docs) => res.send(docs));
     });
 
   app.route('/api/upvotePost')
-    .get(function (req, res) {
+    .post(function (req, res) {
       postApi.upvotePost(req.query, (docs) => res.send(docs));
     });
 
@@ -84,12 +84,12 @@ module.exports = function (app, passport, upload) {
     });
 
   app.route('/api/addComment')
-    .get(function (req, res) {
+    .post(function (req, res) {
       commentApi.addComment(req.query, (docs) => res.send(docs));
     });
 
   app.route('/api/deleteComment')
-    .get(function (req, res) {
+    .post(function (req, res) {
       commentApi.deleteComment(req.query, (docs) => res.send(docs));
     });
 };

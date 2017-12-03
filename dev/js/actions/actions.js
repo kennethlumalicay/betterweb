@@ -105,7 +105,7 @@ export function editPost(form, hidden) {
 export function deletePost(post) {
   return (dispatch) => {
     axios({
-      method: 'get',
+      method: 'post',
       url: '/api/deletePost',
       params: post
     })
@@ -121,7 +121,7 @@ export function deletePost(post) {
 export function upvotePost(post, user) {
   return(dispatch) => {
     axios({
-      method: 'get',
+      method: 'post',
       url: '/api/upvotePost',
       params: {
         ...post,
@@ -134,7 +134,7 @@ export function upvotePost(post, user) {
       .catch(() => {
         dispatch({ type: 'FAILED_UPVOTE_POST' });
       });
-  }
+  };
 }
 
 export function fetchComments() {
@@ -173,6 +173,7 @@ export function fetchPageComments(pid) {
 export function addComment(form) {
   return (dispatch) => {
     axios({
+      method: 'post',
       url: '/api/addComment',
       params: form
     })
@@ -188,7 +189,7 @@ export function addComment(form) {
 export function deleteComment(query) {
   return (dispatch) => {
     axios({
-      method: 'get',
+      method: 'post',
       url: '/api/deleteComment',
       params: query
     })
