@@ -115,15 +115,17 @@ class Settings extends Component {
         <input key='email' type='email' name='email' placeholder='Email (optional)' value={email} onChange={e => this.handleEmail(e)} className={emailTaken ? 'taken' : ''}/>
       ];
 
+    const taken = (userTaken || emailTaken) && !user.guest;
+
     const buttonProp = {
-      className: (userTaken || emailTaken) ? 'taken' : '',
-      disabled: userTaken || emailTaken
+      className: taken ? 'taken' : '',
+      disabled: taken
     };
 
     return (
       <section id='settings'>
-        <form className='form' onSubmit={(e) => emailTaken || userTaken ? e.preventDefault() : this.updateUser(e)}>
-          <input type='text' name='username' placeholder='Username' value={username} maxLength='20' onChange={e => this.handleUser(e)} className={userTaken ? 'taken' : ''}/>
+        <form className='form' onSubmit={(e) => taken ? e.preventDefault() : this.updateUser(e)}>
+          <input type='text' name='username' placeholder='Username' value={username} maxLength='20' onChange={e => this.handleUser(e)} className={userTaken && !user.guest ? 'taken' : ''}/>
           {userForm}
           <h3>Your tag</h3>
           <div>

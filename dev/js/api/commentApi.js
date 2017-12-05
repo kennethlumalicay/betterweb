@@ -1,5 +1,6 @@
 import Comment from './../models/comment.js';
 import { addCommentCount, minusCommentCount } from './postApi.js';
+import { upvoteUser } from './userApi.js';
 
 export const fetchComments = (query, cb) => {
   Comment.find({}, (err, comments) => {
@@ -24,6 +25,7 @@ export const addComment = (query, cb) => {
     usertag: query.usertag,
     comment: query.comment,
     ups: 0,
+    voted: [],
     timestamp: Date.now(),
     guest: query.guest
   });
@@ -38,6 +40,17 @@ export const deleteComment = (query, cb) => {
     if(err) throw err;
     minusCommentCount(query, cb);
   });
+};
+
+export const upvoteComment = (query, cb) => {
+  Comment.updateOne({ cid: query.cid }
+    , { $inc: { ups: 1 }, $push: { voted: query.user }}
+    , null
+    , err => {
+      if(err) throw err;
+      upvoteUser(query, cb);
+    }
+  );
 };
 
 export const deletePostComments = (pid, cb) => {

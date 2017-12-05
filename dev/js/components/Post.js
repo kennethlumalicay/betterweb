@@ -14,9 +14,13 @@ export default (props) => (
         </div>
       )
       : null }
-    <Link to={'/post/' + props.post.pid}>
-      <div className='post-img' style={{backgroundImage: 'url('+props.post.imgLocation+')'}}></div>
-    </Link>
+    { props.page
+      ? <a href={props.post.liveLink} target='_blank' rel='noopener noreferrer'>
+        <div className='post-img' style={{backgroundImage: 'url('+props.post.imgLocation+')'}}></div>
+      </a>
+      : <Link to={'/post/' + props.post.pid}>
+        <div className='post-img' style={{backgroundImage: 'url('+props.post.imgLocation+')'}}></div>
+      </Link> }
     <div className='post-content'>
       <h2>
         <span>{props.post.title}</span>

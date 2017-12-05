@@ -68,11 +68,6 @@ module.exports = function (app, passport, upload) {
       postApi.deletePost(req.query, (docs) => res.send(docs));
     });
 
-  app.route('/api/upvotePost')
-    .post(function (req, res) {
-      postApi.upvotePost(req.query, (docs) => res.send(docs));
-    });
-
   app.route('/api/fetchComments')
     .get(function (req, res) {
       commentApi.fetchComments(req.query, (docs) => res.send(docs));
@@ -91,5 +86,10 @@ module.exports = function (app, passport, upload) {
   app.route('/api/deleteComment')
     .post(function (req, res) {
       commentApi.deleteComment(req.query, (docs) => res.send(docs));
+    });
+
+  app.route('/api/upvote')
+    .post(function (req, res) {
+      userApi.upvote(req.query, (docs) => res.send(docs));
     });
 };

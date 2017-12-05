@@ -19,6 +19,10 @@ class Home extends Component {
             <p>From school / personal project to business web app just post them.</p>
             <p>All kinds of users are welcome and encouraged to participate! You don't need an account to get started.</p>
             <p>Press <i className='fa fa-globe' aria-hidden='true'></i> to visit website and <i className='fa fa-commenting' aria-hidden='true'></i> to join discussion.</p>
+            <div className='splash-social'>
+              <a href='https://www.facebook.com/BetterWebTech/' target='_blank' rel='noopener noreferrer'><i className='fa fa-facebook' aria-hidden='true'></i></a> 
+              <a href='https://twitter.com/BetterWebTech' target='_blank' rel='noopener noreferrer'><i className='fa fa-twitter' aria-hidden='true'></i></a>
+            </div>
           </div>
         </div>
         <Posts />

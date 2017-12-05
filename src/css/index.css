@@ -907,6 +907,16 @@ input {
     min-height: 40vh;
   }
 }
+.splash-social a {
+  padding: 0 0.5rem;
+  margin: 0 0.1rem;
+}
+.fa-facebook {
+  color: #4267B2;
+}
+.fa-twitter {
+  color: #1DA1F2;
+}
 /* xx HOME END xx */
 
 /* -- NOTIF -- */
@@ -1333,6 +1343,10 @@ input {
 .comment .usertag {
   border: none;
 }
+.comment-details {
+  font-size: 0.8rem;
+  color: #aaa;
+}
 /* -- COMMENT MARKDOWN -- */
 .innerhtml {
   color: #ccc;
@@ -1486,7 +1500,7 @@ input {
 .comment .buttonHolder {
   margin: 0;
 }
-.comment .trash {
+.comment .actionButton {
   font-size: 1rem;
   background: none;
   border: none;

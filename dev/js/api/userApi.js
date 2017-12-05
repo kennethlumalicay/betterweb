@@ -1,5 +1,6 @@
 import User from '../models/user.js';
-import { updateAllUserPost } from './postApi.js';
+import { updateAllUserPost, upvotePost } from './postApi.js';
+import { upvoteComment } from './commentApi.js';
 
 export const fetchUsers = (query, cb) => {
   User.find({}, (err, users) => {
@@ -69,4 +70,14 @@ export const upvoteUser = (item, cb) => {
       cb(item);
     }
   );
-}
+};
+
+export const upvote = (item, cb) => {
+  console.log(item.type);
+  switch(item.type.toLowerCase()) {
+    case 'post':
+      return upvotePost(item, cb);
+    case 'comment':
+      return upvoteComment(item, cb);
+  }
+};

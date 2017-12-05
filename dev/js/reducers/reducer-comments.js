@@ -38,6 +38,11 @@ export default function (state = initialState, action) {
           ...state.items.filter(e => e.cid !== payload.cid)
         ]
       };
+    case 'UPVOTED_COMMENT':
+      return {
+        ...state,
+        items: [...state.items.map(e => e.cid === payload.cid ? { ...payload, ups: payload.ups + 1, voted: [...payload.voted, payload.user] } : e)]
+      };
     case 'UPDATED_USER':
       return {
         ...state,

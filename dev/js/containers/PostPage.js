@@ -2,7 +2,7 @@ import React, { Component } from 'react';  // eslint-disable-line
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Modal from 'react-modal';
-import { fetchPosts, fetchOnePost, deletePost, upvotePost } from './../actions/actions.js';
+import { fetchPosts, fetchOnePost, deletePost, upvote } from './../actions/actions.js';
 import Post from './../components/Post.js';
 import EditPost from './PostSubmit.js';
 import Comments from './Comments.js';
@@ -17,7 +17,7 @@ import Comments from './Comments.js';
       deletePost: deletePost,
       fetchPosts: fetchPosts,
       fetchOnePost: fetchOnePost,
-      upvotePost: upvotePost
+      upvote: upvote
     }, dispatch),
     dispatch: dispatch
   })
@@ -75,7 +75,7 @@ class PostPage extends Component {
   }
 
   render() {
-    const { user, posts, upvotePost } = this.props;
+    const { user, posts, upvote } = this.props;
     const { post, checked, editPostModal } = this.state;
     if(posts.fetching || !posts.items || !checked) {
       return (
@@ -93,7 +93,15 @@ class PostPage extends Component {
     }
     return (
       <section id='postpage'>
-        <Post post={post} page={true} editable={true} deletePermission={user.uid === post.uid || user.mod || user.admin} delete={() => this.props.deletePost(post)} edit={() => this.openEditPost()} upsPermission={!user.guest && !post.voted.find(e => e === user.uid)} upvote={() => upvotePost(post, user)}/>
+        <Post
+          post={post}
+          page={true}
+          editable={true}
+          deletePermission={user.uid === post.uid || user.mod || user.admin}
+          delete={() => this.props.deletePost(post)}
+          edit={() => this.openEditPost()}
+          upsPermission={!user.guest && !post.voted.find(e => e === user.uid)}
+          upvote={() => upvote(post, user, 'post')}/>
         <Comments post={post}/>
 
         <Modal className='modal' isOpen={editPostModal} onRequestClose={() => this.closeEditPost()} shouldCloseOnOverlayClick={false}>

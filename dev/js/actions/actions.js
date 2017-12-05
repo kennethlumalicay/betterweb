@@ -118,21 +118,22 @@ export function deletePost(post) {
   };
 }
 
-export function upvotePost(post, user) {
+export function upvote(item, user, type) {
   return(dispatch) => {
     axios({
       method: 'post',
-      url: '/api/upvotePost',
+      url: '/api/upvote',
       params: {
-        ...post,
-        user: user.uid
+        ...item,
+        user: user.uid,
+        type: type
       }
     })
       .then(() => {
-        dispatch({ type: 'server/UPVOTED_POST', payload: { ...post, user: user.uid } });
+        dispatch({ type: 'server/UPVOTED_' + type.toUpperCase(), payload: { ...item, user: user.uid } });
       })
       .catch(() => {
-        dispatch({ type: 'FAILED_UPVOTE_POST' });
+        dispatch({ type: 'FAILED_UPVOTE_' + type.toUpperCase() });
       });
   };
 }

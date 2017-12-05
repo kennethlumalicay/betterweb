@@ -9,6 +9,7 @@ var Comment = new Schema({
   usertag: String,
   comment: String,
   ups: Number,
+  voted: [String],
   guest: Boolean,
   timestamp: Number
 }, { collection: 'comments' });

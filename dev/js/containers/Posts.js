@@ -1,7 +1,7 @@
 import React, { Component } from 'react'; // eslint-disable-line
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchPosts, deletePost, upvotePost } from './../actions/actions.js';
+import { fetchPosts, deletePost, upvote } from './../actions/actions.js';
 import Post from './../components/Post.js';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
@@ -15,7 +15,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
     ...bindActionCreators({
       fetchPosts: fetchPosts,
       deletePost: deletePost,
-      upvotePost: upvotePost
+      upvote: upvote
     }, dispatch),
     dispatch: dispatch
   })
@@ -106,7 +106,7 @@ class Posts extends Component {
   }
 
   render() {
-    const { user, posts, deletePost, upvotePost } = this.props;
+    const { user, posts, deletePost, upvote } = this.props;
     if(posts.fetching || !posts.items) {
       return (
         <section id='posts'>
@@ -139,7 +139,12 @@ class Posts extends Component {
         timeout={500}
         classNames='post'
       >
-        <Post post={post} deletePermission={user.uid === post.uid || user.mod || user.admin} delete={() => deletePost(post)} upsPermission={!user.guest && !post.voted.find(e => e === user.uid)} upvote={() => upvotePost(post, user)}/>
+        <Post
+          post={post}
+          deletePermission={user.uid === post.uid || user.mod || user.admin}
+          delete={() => deletePost(post)}
+          upsPermission={!user.guest && !post.voted.find(e => e === user.uid)}
+          upvote={() => upvote(post, user, 'post')}/>
       </CSSTransition>
     ));
 

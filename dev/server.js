@@ -45,7 +45,7 @@ const upload = multer({
       cb(null, {fieldName: file.fieldName});
     },
     key: function(req, file, cb) {
-      cb(null, req.body.uid + Date.now().toString(36) + path.extname(file.originalname));
+      cb(null, req.query.uid + Date.now().toString(36) + path.extname(file.originalname));
     }
   }),
   limits: {

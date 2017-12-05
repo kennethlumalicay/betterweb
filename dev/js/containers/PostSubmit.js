@@ -29,24 +29,15 @@ class PostSubmit extends Component {
       usertag: data.usertag,
       guest: data.guest,
       username: data.username
-    }
+    };
 
     if(edit) {
       hidden = {
         ...hidden,
         img: data.img,
         pid: data.pid
-      }
+      };
     }
-
-          /*<input type='hidden' name='uid' value={data.uid}/>
-          <input type='hidden' name='usertag' value={data.usertag}/>
-          <input type='hidden' name='guest' value={data.guest}/>
-          { edit
-            ? [<input key='img' type='hidden' name='img' value={post.img}/>,
-              <input key='pid' type='hidden' name='pid' value={post.pid}/>]
-            : null }
-          <input type='hidden' name='username' placeholder='Username' value={data.username}/>*/
 
     // file checks
     const file = edit ? target.newImg.files : target.img.files;
@@ -103,8 +94,7 @@ class PostSubmit extends Component {
   }
 
   render() {
-    const { user, edit, post } = this.props;
-    const data = edit ? post : user;
+    const { edit, post } = this.props;
 
     return (
       <section id='postsubmit'>
@@ -115,7 +105,7 @@ class PostSubmit extends Component {
             <input type='file' name={edit ? 'newImg' : 'img'} accept='image/*' required={!edit}/>
             <span>Image</span>
           </label>
-          <input type='url' name='liveLink' placeholder='Live demo link' autoComplete='off' defaultValue={ edit ? post.liveLink : ''} required={!edit}/>
+          <input type='url' name='liveLink' placeholder='Live link' autoComplete='off' defaultValue={ edit ? post.liveLink : ''} required={!edit}/>
           <input type='url' name='githubLink' placeholder='Github repo (optional)' autoComplete='off' defaultValue={ edit ? post.githubLink : ''}/>
           <input type='submit' value={ edit ? 'Update' : 'Submit'}/>
         </form>

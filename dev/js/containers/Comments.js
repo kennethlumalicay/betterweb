@@ -4,7 +4,7 @@ import emoji from 'markdown-it-emoji';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { addComment, fetchComments, deleteComment } from './../actions/actions.js';
+import { addComment, fetchComments, deleteComment, upvote } from './../actions/actions.js';
 import Comment from './../components/Comment.js';
 
 var md = require('markdown-it')({
@@ -66,7 +66,8 @@ md.renderer.rules.link_open = function (tokens, idx, options, env, self) {
     ...bindActionCreators({
       addComment: addComment,
       deleteComment: deleteComment,
-      fetchComments: fetchComments
+      fetchComments: fetchComments,
+      upvote: upvote
     }, dispatch),
     dispatch: dispatch
   })
@@ -168,7 +169,7 @@ class Comments extends Component {
   }
 
   render() {
-    const { post, user, comments } = this.props;
+    const { post, user, comments, upvote, deleteComment } = this.props;
     const { rows, compose } = this.state;
 
     const postComments = comments.items.filter(e => e.pid === post.pid);
@@ -201,13 +202,15 @@ class Comments extends Component {
             key={'comment'+e.cid}
             timeout={250}
             classNames='comment'
-            delete={this.props.deleteComment}
           >
             <Comment
               deletePermission={user.uid === e.uid || user.mod || user.admin}
+              delete={() => deleteComment(e)}
               diff={diff}
               commentHtml={commentHtml}
-              comment={{...e}}/>
+              comment={{...e}}
+              upsPermission={!user.guest && (e.voted && !e.voted.find(v => v === user.uid) || !e.voted)}
+              upvote={() => upvote(e, user, 'comment')}/>
           </CSSTransition>
         );
       });

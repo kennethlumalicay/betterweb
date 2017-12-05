@@ -27,6 +27,11 @@ export default function (state = initialState, action) {
         ...state,
         ups: state.uid === payload.uid ? state.ups + 1 : state.ups
       };
+    case 'UPVOTED_COMMENT':
+      return {
+        ...state,
+        ups: state.uid === payload.uid ? state.ups + 1 : state.ups
+      };
   }
   return state;
 }
