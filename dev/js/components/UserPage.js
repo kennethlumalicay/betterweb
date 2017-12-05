@@ -79,7 +79,7 @@ class UserPage extends Component {
 
     return (
       <section id='userpage'>
-        <Profile {...user}/>
+        <Profile user={user}/>
         <Posts uid={user.uid}/>
       </section>
     );

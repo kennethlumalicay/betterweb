@@ -43,12 +43,14 @@ export default (props) => (
           ? <button onClick={props.upvote}><i className='fa fa-star-o' aria-hidden='true'></i></button>
           : null }
       </div>
-      <h3>
-        { props.post.guest
-          ? props.post.username
-          : <Link to={'/user/' + props.post.uid}>{props.post.username}</Link> }
-        {oneTag(props.post.usertag, true)}
-      </h3>
+      { props.userPage
+        ? null
+        : <h3>
+          { props.post.guest
+            ? props.post.username
+            : <Link to={'/user/' + props.post.uid}>{props.post.username}</Link> }
+          {oneTag(props.post.usertag, true)}
+        </h3> }
     </div>
   </div>
 );

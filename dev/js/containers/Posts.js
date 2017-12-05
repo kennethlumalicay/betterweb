@@ -106,7 +106,7 @@ class Posts extends Component {
   }
 
   render() {
-    const { user, posts, deletePost, upvote } = this.props;
+    const { user, posts, deletePost, upvote, uid } = this.props;
     if(posts.fetching || !posts.items) {
       return (
         <section id='posts'>
@@ -144,7 +144,8 @@ class Posts extends Component {
           deletePermission={user.uid === post.uid || user.mod || user.admin}
           delete={() => deletePost(post)}
           upsPermission={!user.guest && !post.voted.find(e => e === user.uid)}
-          upvote={() => upvote(post, user, 'post')}/>
+          upvote={() => upvote(post, user, 'post')}
+          userPage={Boolean(uid)}/>
       </CSSTransition>
     ));
 
