@@ -209,7 +209,7 @@ class Comments extends Component {
               diff={diff}
               commentHtml={commentHtml}
               comment={{...e}}
-              upsPermission={!user.guest && (e.voted && !e.voted.find(v => v === user.uid) || !e.voted)}
+              upsPermission={!user.guest && user.uid !== e.uid && (e.voted && !e.voted.find(v => v === user.uid) || !e.voted)}
               upvote={() => upvote(e, user, 'comment')}/>
           </CSSTransition>
         );
