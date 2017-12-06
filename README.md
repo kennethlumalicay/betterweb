@@ -37,6 +37,7 @@ This is an online community where you could share your thoughts and help improve
 
 ### Mid priority:
 * User email verification
+* User forgot password send reset password to email
 * User verified badge
 * Comment update shouldn't cause rerender on other sockets
 * Edit comment
