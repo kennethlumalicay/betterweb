@@ -79,7 +79,7 @@ class PostSubmit extends Component {
 
     // check if the same link has been posted by the user within a day
     const uid = data.uid;
-    const dupe = posts.items.filter(e => e.uid === uid && e.liveLink === live && e.timestamp - Date.now() < 24*1000*60*60);
+    const dupe = posts.items.filter(e => e.uid === uid && e.liveLink === live && Date.now() - e.timestamp < 24*1000*60*60);
     if(dupe.length && (edit ? post.liveLink !== live : true)) {
       dispatch({ type: 'SPAM' });
       return false;
