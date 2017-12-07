@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchUsers } from './../actions/actions.js';
 import { mappedTags } from './../config/usertags.js';
+import { logLogin, logRegister } from './../config/google-analytics.js';
 
 @connect(
   state => ({
@@ -58,6 +59,18 @@ class Login extends Component {
     this.setState({
       email: email
     });
+  }
+
+  handleSubmit(e) {
+    const { emailTaken, userTaken, register } = this.state;
+    if(register) {
+      logRegister();
+    } else {
+      logLogin();
+    }
+    if(emailTaken || userTaken && register) {
+      e.preventDefault();
+    }
   }
 
   componentDidMount() {
@@ -136,7 +149,7 @@ class Login extends Component {
           ? <p>Username or password is incorrect.</p>
           : null
         }
-        <form className='form' action={action} method='POST' onSubmit={(e) => emailTaken || userTaken && register ? e.preventDefault() : null}>
+        <form className='form' action={action} method='POST' onSubmit={(e) => this.handleSubmit(e)}>
           <input type='text' name='username' placeholder='Username' value={username} maxLength='20' autoFocus required onChange={(e) => this.handleUser(e)} {...usernameProp}/>
           <input type='password' name='password' placeholder='Password' value={password} onChange={e => this.handlePass(e)} required/>
           {form}

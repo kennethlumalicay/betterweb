@@ -4,11 +4,13 @@ import Home from './../components/Home.js';
 import Nav from './../containers/Nav.js';
 import UserPage from './../components/UserPage.js';
 import PostPage from './../containers/PostPage.js';
+import { logPageView } from './../config/google-analytics';
 
 class Routes extends Component {
   render() {
     return (
       <section id='route'>
+        <Route component={Analytics} />
         <Route component={ScrollToTop} />
         <Route component={Nav} />
         <Route path='/' component={Home} exact />
@@ -23,6 +25,13 @@ class Routes extends Component {
 const ScrollToTop = () => {
   if(typeof window !== 'undefined')
     window.scrollTo(0, 0);
+  return null;
+};
+
+const Analytics = () => {
+  if(typeof window !== 'undefined') {
+    logPageView(window);
+  }
   return null;
 };
 

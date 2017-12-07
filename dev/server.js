@@ -140,15 +140,6 @@ function renderFullPage(html, title, description, preloadedState, clientSrc) {
         <link rel="icon" type="image/png" href="/src/img/favicon.png">
         <title>${title}</title>
         <meta name="description" content="${description}">
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110893275-1"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'UA-110893275-1');
-        </script>
         <script src="https://use.fontawesome.com/663123f680.js"></script>
         <link href="/src/css/index.css" rel="stylesheet" type="text/css">
       </head>

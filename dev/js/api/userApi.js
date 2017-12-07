@@ -73,7 +73,6 @@ export const upvoteUser = (item, cb) => {
 };
 
 export const upvote = (item, cb) => {
-  console.log(item.type);
   switch(item.type.toLowerCase()) {
     case 'post':
       return upvotePost(item, cb);

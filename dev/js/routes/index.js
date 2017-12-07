@@ -1,6 +1,6 @@
-var userApi = require('./../api/userApi.js');
-var postApi = require('./../api/postApi.js');
-var commentApi = require('./../api/commentApi.js');
+import * as userApi from './../api/userApi.js';
+import * as postApi from './../api/postApi.js';
+import * as commentApi from './../api/commentApi.js';
 
 module.exports = function (app, passport, upload) {
 

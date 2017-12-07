@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { logAddPost, logAddComment, logUpvote } from './../config/google-analytics.js';
 
 export function fetchUsers() {
   return (dispatch) => {
@@ -75,6 +76,7 @@ export function addPost(form, hidden) {
       data
     })
       .then(res => {
+        logAddPost();
         dispatch({ type: 'server/ADDED_POST', payload: res.data });
         dispatch({ type: 'ADDED_POST_NOTIF' });
       })
@@ -130,6 +132,7 @@ export function upvote(item, user, type) {
       }
     })
       .then(() => {
+        logUpvote();
         dispatch({ type: 'server/UPVOTED_' + type.toUpperCase(), payload: { ...item, user: user.uid } });
       })
       .catch(() => {
@@ -179,6 +182,7 @@ export function addComment(form) {
       params: form
     })
       .then(res => {
+        logAddComment();
         dispatch({ type: 'server/ADDED_COMMENT', payload: res.data, pid: form.pid });
       })
       .catch(() => {
