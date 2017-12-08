@@ -825,6 +825,10 @@ input {
   background-color: #E4572E !important;
 }
 /* x FORM END x */
+.gamsg {
+  width: 20rem;
+  font-size: 0.8rem;
+}
 /* xx MODALS END xx */
 /* xx NAV END xx */
 #content > * {

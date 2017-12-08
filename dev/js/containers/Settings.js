@@ -27,7 +27,8 @@ class Settings extends Component {
       username: props.user.username,
       email: props.user.email,
       userTaken: false,
-      emailTaken: false
+      emailTaken: false,
+      gaDisabled: window['ga-disable-UA-110893275-1']
     };
   }
 
@@ -86,6 +87,13 @@ class Settings extends Component {
     });
   }
 
+  toggleGa() {
+    window['ga-disable-UA-110893275-1'] = !window['ga-disable-UA-110893275-1'];
+    this.setState({
+      gaDisabled: window['ga-disable-UA-110893275-1']
+    });
+  }
+
   componentDidMount() {
     const { users, fetchUsers } = this.props;
     if(!users.items.length) {
@@ -95,7 +103,7 @@ class Settings extends Component {
 
   render() {
     const { user, users } = this.props;
-    const { password, username, email, userTaken, emailTaken } = this.state;
+    const { password, username, email, userTaken, emailTaken, gaDisabled } = this.state;
 
     if(users.fetching || !users.items.length) {
       return (
@@ -122,6 +130,10 @@ class Settings extends Component {
       disabled: taken
     };
 
+    const gaMsg = gaDisabled
+      ? 'Help improve this site by letting us use cookies'
+      : 'Opt out on cookie usage for google analytics';
+
     return (
       <section id='settings'>
         <form className='form' onSubmit={(e) => taken ? e.preventDefault() : this.updateUser(e)}>
@@ -133,6 +145,7 @@ class Settings extends Component {
           </div>
           <input type='submit' value='Update' {...buttonProp}/>
         </form>
+        <button className='gamsg' onClick={() => this.toggleGa()}>{gaMsg}</button>
       </section>
     );
   }

@@ -110,7 +110,7 @@ function handleRender(req, res) {
   const store = ServerStore(initialState);
   const context = {};
   const title = 'BetterWeb: Get feedback to improve your site or app\'s quality';
-  const description = 'Help website owners make the web a better place by sharing your thoughts.';
+  const description = 'BetterWeb is a growing online community of web owners, developers or users where we share our websites and give each other feedback, suggestions or feature requests to improve the quality of our website.';
 
   // StaticRouter for server side
   const html = renderToString(
