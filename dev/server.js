@@ -140,7 +140,6 @@ function renderFullPage(html, title, description, preloadedState, clientSrc) {
         <link rel="icon" type="image/png" href="/src/img/favicon.png">
         <title>${title}</title>
         <meta name="description" content="${description}">
-        <script src="https://use.fontawesome.com/663123f680.js"></script>
         <link href="/src/css/index.css" rel="stylesheet" type="text/css">
       </head>
       <body>
@@ -155,5 +154,4 @@ function renderFullPage(html, title, description, preloadedState, clientSrc) {
 }
 
 var port = process.env.PORT || 8080;
-//app.listen(port);
 http.listen(port);
