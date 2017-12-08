@@ -63,6 +63,12 @@
 .fa-commenting:before {
   content: "\f27a";
 }
+.fa-commenting-o:before {
+  content: "\f27b";
+}
+.fa-keyboard-o:before {
+  content: "\f11c";
+}
 .fa-trash-o:before {
   content: "\f014";
 }
