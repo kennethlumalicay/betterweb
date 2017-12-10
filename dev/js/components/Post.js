@@ -39,6 +39,14 @@ export default (props) => (
         { !props.page
           ? <Link to={'/post/' + props.post.pid}><i className='fa fa-commenting' aria-hidden='true'></i> <sup>{props.post.commentCount || ''}</sup></Link>
           : null }
+        <div className='sharePost'>
+          <span><i className='fa fa-share' aria-hidden='true'></i></span>
+          <div>
+            <a href={`http://www.facebook.com/dialog/feed?app_id=140501023253690&ref=site&display=page&link=http://betterweb.tech/post/${props.post.pid}`} target='_blank' rel='noopener noreferrer'><i className='fa fa-facebook' aria-hidden='true'></i></a>
+            <a href={`http://twitter.com/home?status=Help make ${props.post.guest ? 'this' : props.post.username+'\'s'} website better by giving some feedback here at http://betterweb.tech/post/${props.post.pid}. Thanks!`} target='_blank' rel='noopener noreferrer'><i className='fa fa-twitter' aria-hidden='true'></i></a>
+            <a href={`https://www.reddit.com/submit?url=http://betterweb.tech/post/${props.post.pid}&title=Help make ${props.post.guest ? 'this' : props.post.username+'\'s'} website better by giving some feedback here. Thanks!`} target='_blank' rel='noopener noreferrer'><i className='fa fa-reddit' aria-hidden='true'></i></a>
+          </div>
+        </div>
         { props.upsPermission
           ? <button onClick={props.upvote}><i className='fa fa-star-o' aria-hidden='true'></i></button>
           : null }
