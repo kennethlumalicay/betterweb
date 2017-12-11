@@ -44,3 +44,11 @@ export const logUpvote = () => {
     action: 'add'
   });
 };
+
+export const logPaypal = () => {
+  ga.event({
+    category: 'paypal',
+    action: 'click'
+  });
+  console.log('logPaypal');
+};

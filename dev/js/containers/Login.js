@@ -63,13 +63,13 @@ class Login extends Component {
 
   handleSubmit(e) {
     const { emailTaken, userTaken, register } = this.state;
+    if(emailTaken || userTaken && register) {
+      e.preventDefault();
+    }
     if(register) {
       logRegister();
     } else {
       logLogin();
-    }
-    if(emailTaken || userTaken && register) {
-      e.preventDefault();
     }
   }
 

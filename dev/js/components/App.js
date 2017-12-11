@@ -1,6 +1,7 @@
 import React, { Component } from 'react'; // eslint-disable-line
 import Routes from './../routes/app-router.js';
 import Notif from './../containers/notif.js';
+import { logPaypal } from './../config/google-analytics.js';
 
 class App extends Component {
   render() {
@@ -10,7 +11,7 @@ class App extends Component {
         <Routes/>
         <footer>
           <p>App made by <a href='https://kennethlumalicay.github.io/' target='_blank' rel='noopener noreferrer'>Kenneth Malicay</a>. Don't forget to star and fork the <a href='https://github.com/kennethlumalicay/betterweb' target='_blank' rel='noopener noreferrer'>github repo</a>!</p>
-          <p><a href='https://paypal.me/kennethlumalicay/3' target='_blank' rel='noopener noreferrer'>Buy me a coffee or help keep the server up and running.</a></p>
+          <p><a onClick={() => logPaypal()} href='https://paypal.me/kennethlumalicay/3' target='_blank' rel='noopener noreferrer'>Buy me a coffee or help keep the server up and running.</a></p>
         </footer>
       </section>
     );
