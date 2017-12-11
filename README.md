@@ -46,6 +46,7 @@ This is an online community where you could share your thoughts and help improve
 * Notification on replied posts?
 * Github, twitter and facebook passport
 * Code cleanup
+* New splash
 
 ### Low priority:
 * Theme picker

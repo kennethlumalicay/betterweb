@@ -87,7 +87,7 @@ class Nav extends Component {
     const { newPostModal, settingsModal, loginModal, loginFailed, menuOpen } = this.state;
 
     const OpenLinkModal = (props) => (
-      <li><a onClick={props.openModal}>{props.children}</a></li>
+      <li><a className={props.className} onClick={props.openModal}>{props.children}</a></li>
     );
 
     const NavModal = (props) => (
@@ -100,11 +100,11 @@ class Nav extends Component {
     );
 
     // common nav buttons
-    const newPostButton = <OpenLinkModal openModal={() => this.openNewPost()}>New+</OpenLinkModal>;
+    const newPostButton = <OpenLinkModal className='standout' openModal={() => this.openNewPost()}>New+</OpenLinkModal>;
     const settingsButton = (
       <OpenLinkModal openModal={() => this.openSettings()}>
         { user.guest
-          ? <div>Settings</div>
+          ? <div>Guest</div>
           : <div>Me <span className='ups-display'><i className='fa fa-star-o' aria-hidden='true'></i> {user.ups}</span></div> }
       </OpenLinkModal>
     );

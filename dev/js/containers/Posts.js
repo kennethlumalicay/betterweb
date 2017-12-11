@@ -26,8 +26,8 @@ class Posts extends Component {
     super(props);
     this.state = {
       search: '',
-      sort: 'best',
-      dateFilter: '365'
+      sort: 'new',
+      dateFilter: '0'
     };
   }
 
@@ -64,7 +64,10 @@ class Posts extends Component {
   }
 
   filterByDate(posts) {
-    return posts.filter(e => Date.now() - e.timestamp <= Number(this.state.dateFilter)*1000*60*60*24);
+    const { dateFilter } = this.state;
+    return +dateFilter
+      ? posts.filter(e => Date.now() - e.timestamp <= Number(this.state.dateFilter)*1000*60*60*24)
+      : posts;
   }
 
   filterBySearch(posts) {
@@ -155,8 +158,8 @@ class Posts extends Component {
           <input type='text' placeholder='Search' onChange={(e) => this.changeFilter(e)}/>
           <label>
             <select onChange={(e) => this.changeSort(e)}>
-              <option value='best'>Best</option>
               <option value='new'>New</option>
+              <option value='best'>Best</option>
               <option value='relevance'>Relevance</option>
               <option value='mostDiscussed'>Most Discussed</option>
               <option value='needFeedback'>Need Feedback</option>
@@ -164,6 +167,7 @@ class Posts extends Component {
           </label>
           <label>
             <select onChange={(e) => this.changeDateFilter(e)}>
+              <option value='0'>All</option>
               <option value='365'>This Year</option>
               <option value='180'>6 Months</option>
               <option value='90'>3 Months</option>

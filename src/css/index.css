@@ -738,6 +738,12 @@ input {
 .menu > ul > li > a:hover {
   border-left: 0.5rem solid #eee;
 }
+.menu > ul > li > a.standout {
+  color: gold;
+}
+.menu > ul > li > a.standout:hover {
+  border-color: gold;
+}
 @media screen and (min-width: 768px) {
   .dropdown {
     display: none;
@@ -951,12 +957,11 @@ input {
 }
 .splash > div {
   margin: auto auto auto auto;
-  padding: 1rem 0.5rem 1rem 0.5rem;
+  padding: 1rem 0.5rem;
   max-width: 90vw;
-  background-color: rgba(233,233,233,0.9);
+  background-color: rgba(233,233,233,0.95);
 }
 .splash > div > h1 {
-  padding: 0 0.5rem 0 0;
   font-size: 1.2rem;
   font-weight: 900;
   font-family: 'Montserrat';
@@ -965,39 +970,25 @@ input {
 .splash > div > p {
   color: #555;
 }
-@media screen and (min-width: 550px) {
-  .splash > div {
-    max-width: 60vw;
-    margin: auto 0 auto auto;
-  }
+.splash-social {
+  display: flex;
+  justify-content: flex-end;
 }
 @media screen and (min-width: 768px) {
-  .splash > div {
-    max-width: 50vw;
-    margin: auto 0 auto auto;
+  .splash {
+    padding: 2rem;
   }
-}
-@media screen and (min-width: 1024px) {
   .splash > div {
-    max-width: 57vw;
-  }
-  .splash > div > h1 {
-    font-size: 1.8rem;
+    max-width: 28.5rem;
+    padding: 2rem;
   }
 }
 @media screen and (min-width: 1280px) {
   .splash > div {
-    max-width: 50vw;
+    max-width: 33.2rem;
   }
-}
-@media screen and (min-width: 1600px) {
-  .splash > div {
-    max-width: 45vw;
-  }
-}
-@media screen and (min-width: 2560px) {
-  .splash > div {
-    max-width: 39vw;
+  .splash > div > h1 {
+    font-size: 1.4rem;
   }
 }
 @media screen and (orientation: landscape) {
@@ -1254,6 +1245,9 @@ input {
 }
 .post-content > h2 {
   margin: 0.5rem 0;
+  color: #ccc;
+}
+.post-content > h2 > a {
   color: #ccc;
 }
 .post-content > p {
