@@ -924,6 +924,18 @@ input {
 .taken {
   background-color: #E4572E !important;
 }
+.login-with {
+  text-align: center;
+}
+.login-with a > i {
+  color: #333;
+  font-size: 2rem;
+  padding: 0.5rem;
+  transition: all 0.25s ease-in-out;
+}
+.login-with a > i:hover {
+  color: #555;
+}
 /* x FORM END x */
 .gamsg {
   width: 20rem;

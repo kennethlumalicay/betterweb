@@ -10,7 +10,17 @@ var User = new Schema({
   usertag: String,
   ups: Number,
   mod: Boolean,
-  admin: Boolean
+  admin: Boolean,
+  twitter: {
+    id: String,
+    displayName: String,
+    username: String
+  },
+  github: {
+    id: String,
+    displayName: String,
+    username: String
+  }
 }, { collection: 'users' });
 
 module.exports = mongoose.model('User', User);

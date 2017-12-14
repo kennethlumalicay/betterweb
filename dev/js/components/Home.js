@@ -5,7 +5,7 @@ class Home extends Component {
 
   componentDidMount() {
     document.title = 'BetterWeb: Get feedback to improve the quality of your website';
-    document.description = 'BetterWeb is a growing online community of web owners and developers where we share our websites and give each other feedback, suggestions or feature requests to improve the quality of our website.';
+    document.description = 'BetterWeb is a growing community of web owners and developers where we share our websites and give each other feedback, suggestions or feature requests to improve the quality of our website.';
   }
 
   render() {

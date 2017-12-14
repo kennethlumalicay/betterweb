@@ -23,6 +23,24 @@ module.exports = function (app, passport, upload) {
       });
     });
 
+  app.route('/auth/twitter')
+    .get(passport.authenticate('twitter'));
+
+  app.route('/auth/twitter/callback')
+    .get(passport.authenticate('twitter', {
+      successRedirect: '/',
+      failureRedirect: '/'
+    }));
+
+  app.route('/auth/github')
+    .get(passport.authenticate('github'));
+
+  app.route('/auth/github/callback')
+    .get(passport.authenticate('github', {
+      successRedirect: '/',
+      failureRedirect: '/'
+    }));
+
   app.route('/api/fetchUsers')
     .get(function (req, res) {
       userApi.fetchUsers(req.query, (docs) => res.send(docs));

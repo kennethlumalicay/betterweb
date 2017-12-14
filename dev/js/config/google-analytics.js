@@ -10,10 +10,11 @@ export const logModalView = (modal) => {
   ga.modalview(`/${modal}`);
 };
 
-export const logLogin = () => {
+export const logLogin = (type) => {
   ga.event({
     category: 'user',
-    action: 'login'
+    action: 'login',
+    label: type
   });
 };
 

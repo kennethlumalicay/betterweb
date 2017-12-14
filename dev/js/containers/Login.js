@@ -69,8 +69,12 @@ class Login extends Component {
     if(register) {
       logRegister();
     } else {
-      logLogin();
+      logLogin('local');
     }
+  }
+
+  handleSocialLogin(type) {
+    logLogin(type);
   }
 
   componentDidMount() {
@@ -157,6 +161,13 @@ class Login extends Component {
         </form>
         <div>
           <button onClick={() => {this.toggleRegister();}}>{msg}</button>
+        </div>
+        <div className='login-with'>
+          <div>OR</div>
+          <div>
+            <a onClick={() => this.handleSocialLogin('twitter')} href='/auth/twitter'><i className='fa fa-twitter' aria-hidden='true'></i></a>
+            <a onClick={() => this.handleSocialLogin('github')} href='/auth/github'><i className='fa fa-github' aria-hidden='true'></i></a>
+          </div>
         </div>
       </section>
     );
