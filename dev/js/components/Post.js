@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { oneTag } from './../config/usertags.js';
 
 export default (props) => (
-  <div className='post'>
-    { props.deletePermission
+  <div className={'post' + (props.post.newComment && props.owner ? ' new-comment' : '')}>
+    { props.deletePermission || props.owner
       ? (
         <div className='buttonHolder'>
           <button className='actionButton trash' onClick={props.delete}><i className='fa fa-trash-o' aria-hidden='true'></i></button>
@@ -47,7 +47,7 @@ export default (props) => (
             <a href={`https://www.reddit.com/submit?url=http://betterweb.tech/post/${props.post.pid}&title=Help make ${props.post.guest ? 'this' : props.post.username+'\'s'} website better by giving some feedback here. Thanks!`} target='_blank' rel='noopener noreferrer'><i className='fa fa-reddit' aria-hidden='true'></i></a>
           </div>
         </div>
-        { props.upsPermission
+        { props.upsPermission && !props.owner
           ? <button onClick={props.upvote}><i className='fa fa-star-o' aria-hidden='true'></i></button>
           : null }
       </div>

@@ -77,7 +77,8 @@ export default function (state = initialState, action) {
           if(e.pid === payload.pid) {
             return {
               ...e,
-              commentCount: e.commentCount + 1
+              commentCount: e.commentCount + 1,
+              newComment: true
             };
           }
           return e;
@@ -91,6 +92,19 @@ export default function (state = initialState, action) {
             return {
               ...e,
               commentCount: e.commentCount - 1
+            };
+          }
+          return e;
+        })]
+      };
+    case 'CHECKED_POST':
+      return {
+        ...state,
+        items: [...state.items.map(e => {
+          if(e.pid === payload) {
+            return {
+              ...e,
+              newComment: false
             };
           }
           return e;

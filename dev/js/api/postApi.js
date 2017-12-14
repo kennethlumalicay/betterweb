@@ -108,7 +108,7 @@ export const updateAllUserPost = (user, cb) => {
 
 export const addCommentCount = (comment, cb) => {
   Post.updateOne({ pid: comment.pid }
-    , { $inc: { commentCount: 1 }}
+    , { $inc: { commentCount: 1 }, newComment: true }
     , null
     , err => {
       if(err) throw err;
@@ -123,5 +123,15 @@ export const minusCommentCount = (comment, cb) => {
     , err => {
       if(err) throw err;
       cb(null);
+    });
+};
+
+export const checkPost = (query, cb) => {
+  Post.updateOne({ pid: query.pid }
+    , { newComment: false }
+    , null
+    , err => {
+      if(err) throw err;
+      cb(query.pid);
     });
 };

@@ -206,3 +206,21 @@ export function deleteComment(query) {
       });
   };
 }
+
+export function postChecked(post) {
+  return (dispatch) => {
+    axios({
+      method: 'post',
+      url: '/api/checkPost',
+      params: {
+        pid: post.pid
+      }
+    })
+      .then(() => {
+        dispatch({ type: 'server/CHECKED_POST', payload: post.pid });
+      })
+      .catch(() => {
+        dispatch({ type: 'FAILED_CHECK_POST' });
+      });
+  };
+}

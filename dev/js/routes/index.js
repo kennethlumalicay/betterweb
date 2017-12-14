@@ -110,4 +110,9 @@ module.exports = function (app, passport, upload) {
     .post(function (req, res) {
       userApi.upvote(req.query, (docs) => res.send(docs));
     });
+
+  app.route('/api/checkPost')
+    .post(function (req, res) {
+      postApi.checkPost(req.query, (docs) => res.send(docs));
+    });
 };

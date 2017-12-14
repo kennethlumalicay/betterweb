@@ -8,7 +8,8 @@ import Login from './../containers/Login.js';
 
 @connect(
   state => ({
-    user: state.user
+    user: state.user,
+    posts: state.posts
   })
 )
 
@@ -83,7 +84,7 @@ class Nav extends Component {
   }
 
   render() {
-    const { user } = this.props;
+    const { user, posts } = this.props;
     const { newPostModal, settingsModal, loginModal, loginFailed, menuOpen } = this.state;
 
     const OpenLinkModal = (props) => (
@@ -109,6 +110,9 @@ class Nav extends Component {
       </OpenLinkModal>
     );
 
+    // check for newComment
+    const newComments = posts.items.filter(e => e.uid === user.uid && e.newComment);
+
     // make nav buttons
     const nav = user.guest
       ? (
@@ -121,7 +125,7 @@ class Nav extends Component {
       : (
         <ul>
           {newPostButton}
-          <li><Link to={'/user/' + user.uid}>My post</Link></li>
+          <li><Link to={'/user/' + user.uid}>My post {newComments.length ? <sup>{newComments.length}</sup> : null}</Link></li>
           {settingsButton}
           <li><a href='/signout'>Sign out</a></li>
         </ul>

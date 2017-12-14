@@ -17,7 +17,8 @@ var Post = new Schema({
   voted: [String],
   guest: Boolean,
   locked: Boolean,
-  commentCount: Number
+  commentCount: Number,
+  newComment: Boolean
 }, { collection: 'posts' });
 
 module.exports = mongoose.model('Post', Post);

@@ -735,6 +735,11 @@ input {
   border-left: 0.5rem solid rgba(0,0,0,0);
   transition: all 0.25s ease-in-out;
 }
+.menu > ul > li > a > sup {
+  font-size: 0.8rem;
+  color: salmon;
+  top: -1rem;
+}
 .menu > ul > li > a:hover {
   border-left: 0.5rem solid #eee;
 }
@@ -1281,6 +1286,9 @@ input {
 }
 .post-content > h3 > a:hover {
   color: #ccc;
+}
+.new-comment {
+  box-shadow: 0 1px 10px rgba(0,255,0,0.4);
 }
 /* xx POSTS END xx */
 /* -- POST PAGE -- */

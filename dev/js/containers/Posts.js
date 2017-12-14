@@ -144,7 +144,8 @@ class Posts extends Component {
       >
         <Post
           post={post}
-          deletePermission={user.uid === post.uid || user.mod || user.admin}
+          owner={user.uid === post.uid}
+          deletePermission={user.mod || user.admin}
           delete={() => deletePost(post)}
           upsPermission={!user.guest && !post.voted.find(e => e === user.uid)}
           upvote={() => upvote(post, user, 'post')}

@@ -2,7 +2,7 @@ import React, { Component } from 'react';  // eslint-disable-line
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Modal from 'react-modal';
-import { fetchPosts, fetchOnePost, deletePost, upvote } from './../actions/actions.js';
+import { fetchPosts, fetchOnePost, deletePost, upvote, postChecked } from './../actions/actions.js';
 import Post from './../components/Post.js';
 import EditPost from './PostSubmit.js';
 import Comments from './Comments.js';
@@ -17,7 +17,8 @@ import Comments from './Comments.js';
       deletePost: deletePost,
       fetchPosts: fetchPosts,
       fetchOnePost: fetchOnePost,
-      upvote: upvote
+      upvote: upvote,
+      postChecked: postChecked
     }, dispatch),
     dispatch: dispatch
   })
@@ -41,6 +42,9 @@ class PostPage extends Component {
       post: post,
       checked: true
     });
+    if(post.uid === this.props.user.uid) {
+      this.props.postChecked(post);
+    }
   }
 
   componentDidMount() {
@@ -55,6 +59,9 @@ class PostPage extends Component {
       });
       document.title = post.title + ' | BetterWeb';
       document.description = post.description;
+    }
+    if(post.uid === this.props.user.uid) {
+      this.props.postChecked(post);
     }
   }
 
@@ -97,7 +104,8 @@ class PostPage extends Component {
           post={post}
           page={true}
           editable={true}
-          deletePermission={user.uid === post.uid || user.mod || user.admin}
+          owner={user.uid === post.uid}
+          deletePermission={user.mod || user.admin}
           delete={() => this.props.deletePost(post)}
           edit={() => this.openEditPost()}
           upsPermission={!user.guest && !post.voted.find(e => e === user.uid)}
