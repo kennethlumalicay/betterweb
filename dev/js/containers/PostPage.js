@@ -37,14 +37,7 @@ class PostPage extends Component {
 
   componentWillReceiveProps(next) {
     const post = this.getPost(next);
-    this.setState({
-      pid: next.match.params.pid,
-      post: post,
-      checked: true
-    });
-    if(post.uid === this.props.user.uid) {
-      this.props.postChecked(post);
-    }
+    this.initPage(post);
   }
 
   componentDidMount() {
@@ -52,16 +45,20 @@ class PostPage extends Component {
       this.props.fetchOnePost(this.state.pid);
     }
     const post = this.getPost(this.props);
-    if(post) {
+    this.initPage(post);
+  }
+
+  initPage(post) {
+    if(typeof post !== 'undefined') {
+      document.title = post.title + ' | BetterWeb';
+      document.description = post.description;
+      if(post.newComment && post.uid === this.props.user.uid) {
+        this.props.postChecked(post);
+      }
       this.setState({
         post: post,
         checked: true
       });
-      document.title = post.title + ' | BetterWeb';
-      document.description = post.description;
-    }
-    if(post.uid === this.props.user.uid) {
-      this.props.postChecked(post);
     }
   }
 
