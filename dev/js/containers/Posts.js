@@ -82,7 +82,7 @@ class Posts extends Component {
       
       const relevant = posts.map(e => {
         e.relevance = 0;
-        e.relevance = (getRelevance(e.title)*3) + (getRelevance(e.username)*3) + getRelevance(e.description);
+        e.relevance = getRelevance(e.title)*3 + getRelevance(e.username)*3 + getRelevance(e.usertag)*2 + getRelevance(e.description);
         e.relevance += e.relevance > 0 ? e.ups : 0; 
         return e;
       });

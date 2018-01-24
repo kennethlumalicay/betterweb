@@ -1492,7 +1492,6 @@ input {
 .innerhtml pre {
   background-color: #222;
   border-radius: 2px;
-  padding: 0.1rem 0.2rem;
   white-space: pre-wrap;
 }
 .innerhtml pre code {
