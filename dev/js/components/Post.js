@@ -23,7 +23,9 @@ export default (props) => (
       </Link> }
     <div className='post-content'>
       <h2>
-        <a href={props.post.liveLink} target='_blank' rel='noopener noreferrer'>{props.post.title}</a>
+        { props.page
+          ? <a href={props.post.liveLink} target='_blank' rel='noopener noreferrer'>{props.post.title}</a>
+          : <Link to={'/post/' + props.post.pid}>{props.post.title}</Link> }
         { props.post.ups
           ? <span className='ups-display'> <i className='fa fa-star-o' aria-hidden='true'></i> <span>{props.post.ups}</span></span>
           : null }

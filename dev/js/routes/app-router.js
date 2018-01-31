@@ -2,7 +2,7 @@ import React, { Component } from 'react'; // eslint-disable-line
 import { Route, Switch } from 'react-router-dom';
 import Home from './../components/Home.js';
 import Nav from './../containers/Nav.js';
-import UserPage from './../components/UserPage.js';
+import UserPage from './../containers/UserPage.js';
 import PostPage from './../containers/PostPage.js';
 import AdminPage from './../containers/AdminPage.js';
 import { logPageView } from './../config/google-analytics';
