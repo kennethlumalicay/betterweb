@@ -1431,7 +1431,7 @@ input {
           transform: scale(0.8);
 }
 .comment:hover {
-  background-color: #444;
+  background-color: #3a3a3a;
 }
 .commentUser {
   display: -webkit-box;
@@ -1485,7 +1485,7 @@ input {
   max-width: 90%;
 }
 .innerhtml code {
-  background-color: #222;
+  background-color: #444;
   border-radius: 2px;
   padding: 0.1rem 0.2rem;
 }
