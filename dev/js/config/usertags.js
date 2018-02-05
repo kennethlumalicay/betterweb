@@ -1,9 +1,9 @@
 import React from 'react'; // eslint-disable-line
 
 export const usertags = [
-  { tag: 'User', color: '#48E5C2' },
+  { tag: 'User', color: '#087E8B' },
   { tag: 'Business Owner', color: '#61E786' },
-  { tag: 'Hobbyist', color: '#087E8B' },
+  { tag: 'Hobbyist', color: '#48E5C2' },
   { tag: 'Blogger', color: '#EDFFEC' },
   { tag: 'Writer', color: '#9792E3' },
   { tag: 'Photographer', color: '#ADE25D' },
