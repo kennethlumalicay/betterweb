@@ -1545,11 +1545,15 @@ input {
 }
 #profile {
   align-self: center;
+  text-align: center;
 }
 #profile > h1 {
   font-family: 'Montserrat';
   color: #aaa;
-  text-align: center;
+}
+#profile > p {
+  margin: 0;
+  color: #ccc;
 }
 /* xx USER PAGE END xx */
 /* -- PAGE 404 -- */
