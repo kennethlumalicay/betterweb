@@ -1149,6 +1149,7 @@ input {
   font-size: 0.9rem;
   word-wrap: break-word;
   transition: all 0.5s ease-in-out;
+  overflow: hidden;
 }
 .post-img {
   height: 8rem;

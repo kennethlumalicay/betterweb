@@ -112,7 +112,7 @@ gulp.task('nodemon', ['watch-client', 'watch-server'], function() {
         browser.reload({
           stream: false
         });
-      }, 1000);
+      }, 2000);
   });
 });
 
