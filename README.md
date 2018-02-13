@@ -34,6 +34,7 @@ This is an online community where you could share your thoughts and help improve
 * Show notification button on nav
 * User forgot password send reset password to email
 * Tests
+* Add delete confirm
 
 ### Mid priority:
 * User email verification
@@ -42,8 +43,7 @@ This is an online community where you could share your thoughts and help improve
 * Edit comment
 * ScrollToBottom on new comment if scrolled all the way down
 * Notification on replied posts?
-* facebook passport
-* Code cleanup
+* Facebook passport
 
 ### Low priority:
 * Theme picker
