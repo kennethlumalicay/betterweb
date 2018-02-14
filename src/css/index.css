@@ -747,7 +747,8 @@ input {
   color: gold;
 }
 .menu > ul > li > a.standout:hover {
-  border-color: gold;
+  border-left-color: gold;
+  border-bottom-color: gold;
 }
 @media screen and (min-width: 768px) {
   .dropdown {
@@ -772,8 +773,8 @@ input {
     display: flex;
     -webkit-box-pack: center;
             justify-content: center;
-    -webkit-box-align: end;
-            align-items: flex-end;
+    -webkit-box-align: center;
+            align-items: center;
     width: 100%;
     font-size: 1.2rem;
     font-family: 'Montserrat';
@@ -781,11 +782,12 @@ input {
     min-width: 5rem;
     color: #eee;
     border-left: none;
-    border-bottom: 0.5rem solid rgba(0,0,0,0);
+    border-top: 0.5rem solid transparent;
+    border-bottom: 0.5rem solid transparent;
   }
   .menu > ul > li > a:hover {
     border-left: none;
-    border-bottom: 0.5rem solid #eee;
+    border-bottom-color: #eee;
   }
 }
 /* -- MODALS -- */
