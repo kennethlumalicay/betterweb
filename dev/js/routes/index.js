@@ -115,4 +115,11 @@ module.exports = function (app, passport, upload) {
     .post(function (req, res) {
       postApi.checkPost(req.query, (docs) => res.send(docs));
     });
+
+  /*
+  app.route('/api/secret/updateAllPostModel')
+    .get(function (req, res) {
+      postApi.updateAllPostModel((docs) => res.send(docs));
+    });
+  */
 };

@@ -36,7 +36,8 @@ export const addPost = (query, cb) => {
     voted: [],
     guest: query.guest,
     locked: false,
-    commentCount: 0
+    commentCount: 0,
+    lastComment: Date.now()
   });
   newPost.save(err => {
     if(err) throw err;
@@ -108,7 +109,11 @@ export const updateAllUserPost = (user, cb) => {
 
 export const addCommentCount = (comment, cb) => {
   Post.updateOne({ pid: comment.pid }
-    , { $inc: { commentCount: 1 }, newComment: true }
+    , {
+      $inc: { commentCount: 1 },
+      newComment: true,
+      lastComment: Date.now()
+    }
     , null
     , err => {
       if(err) throw err;
@@ -135,3 +140,16 @@ export const checkPost = (query, cb) => {
       cb(query.pid);
     });
 };
+
+/*
+export const updateAllPostModel = (cb) => {
+  Post.updateMany({}
+    , { lastComment: Date.now()}
+    , null
+    , err => {
+      if(err) throw err;
+      cb('Success');
+    }
+  );
+};
+*/

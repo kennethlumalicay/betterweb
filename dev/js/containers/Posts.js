@@ -26,7 +26,7 @@ class Posts extends Component {
     super(props);
     this.state = {
       search: '',
-      sort: 'new',
+      sort: 'latestFeedback',
       dateFilter: '0'
     };
   }
@@ -101,6 +101,8 @@ class Posts extends Component {
         return sort(posts, 'ups');
       case 'relevance':
         return sort(posts, 'relevance');
+      case 'latestFeedback':
+        return sort(posts, 'lastComment');
       case 'mostDiscussed':
         return sort(posts, 'commentCount');
       case 'needFeedback':
@@ -146,7 +148,7 @@ class Posts extends Component {
           post={post}
           owner={user.uid === post.uid}
           deletePermission={user.mod || user.admin}
-          delete={() => deletePost(post)}
+          delete={() => confirm('Delete post?') ? deletePost(post) : null}
           upsPermission={!user.guest && !post.voted.find(e => e === user.uid)}
           upvote={() => upvote(post, user, 'post')}
           userPage={Boolean(uid)}/>
@@ -159,6 +161,7 @@ class Posts extends Component {
           <input type='text' placeholder='Search' onChange={(e) => this.changeFilter(e)}/>
           <label>
             <select onChange={(e) => this.changeSort(e)}>
+              <option value='latestFeedback'>Latest Feedback</option>
               <option value='new'>New</option>
               <option value='best'>Best</option>
               <option value='relevance'>Relevance</option>

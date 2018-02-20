@@ -78,7 +78,8 @@ export default function (state = initialState, action) {
             return {
               ...e,
               commentCount: e.commentCount + 1,
-              newComment: true
+              newComment: true,
+              lastComment: Date.now()
             };
           }
           return e;
