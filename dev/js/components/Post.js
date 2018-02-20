@@ -14,7 +14,7 @@ class Post extends Component {
 
     const buttonHolder = props.deletePermission || props.owner
       ? <div className='buttonHolder'>
-        <button className='actionButton trash' onClick={props.delete}><i className='fa fa-trash-o' aria-hidden='true'></i></button>
+        <button className='actionButton trash' onClick={() => confirm('Delete post?') ? props.delete(props.post) : null}><i className='fa fa-trash-o' aria-hidden='true'></i></button>
         { editBtn }
       </div>
       : null;

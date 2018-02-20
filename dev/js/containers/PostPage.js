@@ -103,7 +103,10 @@ class PostPage extends Component {
           editable={true}
           owner={user.uid === post.uid}
           deletePermission={user.mod || user.admin}
-          delete={() => this.props.deletePost(post)}
+          delete={p => {
+            this.props.deletePost(p);
+            this.props.history.goBack();
+          }}
           edit={() => this.openEditPost()}
           upsPermission={!user.guest && !post.voted.find(e => e === user.uid)}
           upvote={() => upvote(post, user, 'post')}/>

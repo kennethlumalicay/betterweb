@@ -148,7 +148,7 @@ class Posts extends Component {
           post={post}
           owner={user.uid === post.uid}
           deletePermission={user.mod || user.admin}
-          delete={() => confirm('Delete post?') ? deletePost(post) : null}
+          delete={p => deletePost(p)}
           upsPermission={!user.guest && !post.voted.find(e => e === user.uid)}
           upvote={() => upvote(post, user, 'post')}
           userPage={Boolean(uid)}/>
