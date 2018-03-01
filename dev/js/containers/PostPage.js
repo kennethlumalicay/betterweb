@@ -55,11 +55,11 @@ class PostPage extends Component {
       if(post.newComment && post.uid === this.props.user.uid) {
         this.props.postChecked(post);
       }
-      this.setState({
-        post: post,
-        checked: true
-      });
     }
+    this.setState({
+      post: post,
+      checked: true
+    });
   }
 
   openEditPost() {

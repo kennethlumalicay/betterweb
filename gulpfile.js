@@ -108,11 +108,11 @@ gulp.task('nodemon', ['watch-client', 'watch-server'], function() {
   }).on('restart', function() {
     clearTimeout(st);
     var st = setTimeout(function reload() {
-      console.log('Restarted!');
-        browser.reload({
-          stream: false
-        });
-      }, 1000);
+      browser.reload({
+        stream: false
+      });
+    console.log('Restarted!');
+    }, 1500);
   });
 });
 
