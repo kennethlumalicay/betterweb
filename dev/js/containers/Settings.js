@@ -38,10 +38,10 @@ class Settings extends Component {
     closeModal();
 
     if(user.guest) {
-      const { uid, usertag, username } = event.target;
+      const { usertag, username } = event.target;
       const prefixed = new RegExp('guest','gi').test(username.value);
       dispatch({ type:'UPDATE_GUEST', payload: {
-        uid: uid.value,
+        uid: user.uid,
         username: ( !prefixed ? 'Guest ' : '' ) + username.value,
         usertag: usertag.value,
         guest: true

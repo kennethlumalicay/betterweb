@@ -71,7 +71,7 @@ function onBuild(done) {
     if(done) {
       done();
     }
-  }
+  };
 }
 
 gulp.task('build-server', function(done) {
@@ -79,7 +79,7 @@ gulp.task('build-server', function(done) {
 });
 
 gulp.task('watch-server', function() {
-  webpack(serverConfig).watch(100, function(err, stats) {
+  webpack(serverConfig).watch(200, function(err, stats) {
     onBuild()(err, stats);
     nodemon.restart();
   });
@@ -90,7 +90,7 @@ gulp.task('build-client', function(done) {
 });
 
 gulp.task('watch-client', function() {
-  webpack(clientConfig).watch(100, onBuild());
+  webpack(clientConfig).watch(200, onBuild());
 });
 
 gulp.task('build', ['build-client', 'build-server']);
@@ -106,13 +106,13 @@ gulp.task('nodemon', ['watch-client', 'watch-server'], function() {
     watch: ['foo/'],
     ext: 'noop'
   }).on('restart', function() {
-    console.log('Restarted!');
     clearTimeout(st);
     var st = setTimeout(function reload() {
+      console.log('Restarted!');
         browser.reload({
           stream: false
         });
-      }, 2000);
+      }, 1000);
   });
 });
 
