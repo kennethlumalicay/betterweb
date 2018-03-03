@@ -46,14 +46,14 @@ const commonConfig = {
 }
 
 module.exports = [{
-  entry:'./dev/client.js',
+  entry:'./src/client.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: './client.min.js'
   },
   ...commonConfig
 }, {
-  entry:'./dev/server.js',
+  entry:'./src/server.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: './server.min.js'

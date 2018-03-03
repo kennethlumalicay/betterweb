@@ -82,13 +82,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.enable('trust proxy');
 
 // Static
-app.use('/src', express.static('src'));
+app.use('/src', express.static('public'));
 app.use('/build', express.static('build'));
 app.use('/dist', express.static('dist'));
 
 // View engine ejs
 app.engine('.html', require('ejs').__express);
-app.set('views', __dirname + '/../src');
+app.set('views', __dirname + '/../public');
 app.set('view engine', 'html');
 
 // Routes

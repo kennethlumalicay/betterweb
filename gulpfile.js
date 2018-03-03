@@ -40,7 +40,7 @@ var config = {
 };
 
 var serverConfig = {
-  entry: './dev/server.js',
+  entry: './src/server.js',
   output: {
     path: path.join(__dirname, 'build'),
     filename: 'server.js'
@@ -51,7 +51,7 @@ var serverConfig = {
 };
 
 var clientConfig = {
-  entry: './dev/client.js',
+  entry: './src/client.js',
   output: {
     path: path.join(__dirname, 'build'),
     filename: 'client.js'
