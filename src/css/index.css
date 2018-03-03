@@ -1129,15 +1129,15 @@ input {
   padding: 0.5rem;
 }
 .posts {
-  display: -webkit-box;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0 0.5rem;
+  display: grid;
+  grid: auto / 1fr;
+  grid-auto-rows: auto;
+  grid-gap: 1rem;
+  padding: 0 1rem;
 }
 .post {
   position: relative;
   border-radius: 2px;
-  margin: 0.5rem 0.5%;
   display: -webkit-box;
   display: flex;
   -webkit-box-orient: vertical;
@@ -1145,7 +1145,7 @@ input {
           flex-direction: column;
   -webkit-box-pack: start;
           justify-content: flex-start;
-  width: 99%;
+  width: 100%;
   background-color: #444;
   color: #aaa;
   font-size: 0.9rem;
@@ -1154,64 +1154,33 @@ input {
   overflow: hidden;
 }
 .post-img {
-  height: 8rem;
+  max-width: 100%;
+  padding-bottom: 56.25%;
   background-position: center;
   background-size: cover;
-  transition: filter 0.5s ease-in-out;
+  transition: all 0.35s ease-in-out;
 }
 .post-img:hover {
   filter: brightness(0.8);
 }
-@media screen and (min-width: 375px) {
-  .post-img {
-    height: 12rem;
-  }
-}
-@media screen and (min-width: 460px) {
-  .post-img {
-    height: 15rem;
-  }
-}
 @media screen and (min-width: 550px) {
-  .post {
-    width: 48%;
-  }
-  .post-img {
-    height: 8rem;
+  .posts {
+    grid: auto / 1fr 1fr;
   }
 }
 @media screen and (min-width: 768px) {
-  .post-img {
-    height: 12rem;
-  }
-}
-@media screen and (min-width: 1024px) {
-  .post {
-    width: 32.33%;
-  }
-  .post-img {
-    height: 8rem;
+  .posts {
+    grid: auto / 1fr 1fr 1fr;
   }
 }
 @media screen and (min-width: 1280px) {
-  .post {
-    width: 24%;
-  }
-  .post-img {
-    height: 8rem;
+  .posts {
+    grid: auto / 1fr 1fr 1fr 1fr;
   }
 }
 @media screen and (min-width: 1900px) {
-  .post {
-    width: 19%;
-  }
-  .post-img {
-    height: 8rem;
-  }
-}
-@media screen and (min-width: 2560px) {
-  .post-img {
-    height: 10rem;
+  .posts {
+    grid: auto / 1fr 1fr 1fr 1fr 1fr;
   }
 }
 .post-enter {
@@ -1305,46 +1274,14 @@ input {
           justify-content: center;
   -webkit-box-align: center;
           align-items: center;
-  padding: 0.5rem 1%;
-  min-width: 98%;
+  padding: 0 1rem;
+  width: 100%;
   min-height: 25rem;
   margin: auto;
+  box-sizing: border-box;
 }
 #postpage > .post {
-  width: 90%;
-}
-#postpage > .post img {
-  max-height: 50vh;
-}
-@media screen and (min-width: 375px) {
-  #postpage .post-img {
-    height: 10rem;
-  }
-}
-@media screen and (min-width: 460px) {
-  #postpage .post-img {
-    height: 12rem;
-  }
-}
-@media screen and (min-width: 550px) {
-  #postpage .post-img {
-    height: 15rem;
-  }
-}
-@media screen and (min-width: 768px) {
-  #postpage .post-img {
-    height: 8rem;
-  }
-}
-@media screen and (min-width: 1280px) {
-  #postpage .post-img {
-    height: 10rem;
-  }
-}
-@media screen and (min-width: 2560px) {
-  #postpage .post-img {
-    height: 12rem;
-  }
+  width: 100%;
 }
 #comments {
   -webkit-box-flex: 1;
@@ -1356,46 +1293,42 @@ input {
           flex-direction: column;
   -webkit-box-pack: end;
           justify-content: flex-end;
-  border-radius: 2px;
-  padding: 0 0.5%;
-  width: 98%;
-  margin: auto;
+  width: 100%;
+  margin-top: 1rem;
 }
 #comments form {
   -webkit-box-flex: 0;
           flex: 0 0;
   display: -webkit-box;
   display: flex;
-  flex-wrap: wrap;
-  -webkit-box-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-          align-items: center;
+  align-items: flex-end;
 }
 #comments textarea {
-  display: inline-block;
-  resize: none;
+  flex: 1;
+  display: block;
   background-color: rgba(68,68,68,0.9);
   color: #ccc;
   caret-color: #eee;
   border-radius: 2px;
-  padding: 0.2rem 0.5rem;
+  padding: 0.5rem;
   border: none;
   outline: none;
   font-size: 1rem;
   width: 100%;
   max-width: 100%;
+  min-width: 50%;
+  min-height: 20px;
 }
 #comments > form [type='submit'], #comments > form button {
-  display: inline-block;
+  display: block;
   border-radius: 2px;
   background-color: rgba(170,170,170,0.9);
   padding: 0.5rem;
   color: #333;
+    margin: 0 0 0 4px;
 }
 #comments > form button {
-  margin: 0.2rem 0.5rem;
-  width: 3rem;
+  min-width: 2rem;
 }
 .stream {
   -webkit-box-flex: 1;
@@ -1513,14 +1446,12 @@ input {
     display: block;
     -webkit-box-align: center;
             align-items: center;
-    padding: 0.5rem;
     min-height: 0;
+    padding: 0;
     margin: 0;
   }
   #postpage > .post {
-    align-self: flex-start;
     width: 30%;
-    max-width: 30rem;
     position: fixed;
     top: 4rem;
     left: 5%;
@@ -1530,11 +1461,8 @@ input {
   }
   #comments {
     margin: auto 5% auto 40%;
-    max-width: 55%;
+    width: 55%;
     /*max-height: 80vh;*/
-  }
-  #comments form {
-    flex-wrap: nowrap;
   }
 }
 /* xx POSTS PAGE END xx */

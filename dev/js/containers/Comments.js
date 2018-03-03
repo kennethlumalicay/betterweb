@@ -77,7 +77,7 @@ class Comments extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      rows: 2,
+      rows: 1,
       compose: false
     };
   }
@@ -97,9 +97,10 @@ class Comments extends Component {
   handleEnter(event) {
     const textarea = event.target;
     const linebreak = textarea.value.match(/\r\n|\r|\n/gi);
-    const lbrows = linebreak ? linebreak.length : 0;
+    let lbrows = linebreak && linebreak.length + 1 || 1;
+    lbrows += event.key === 'Enter' ? 1 : 0;
     this.setState({
-      rows: lbrows ? lbrows + 1 : 2
+      rows: lbrows
     });
 
     const { compose } = this.state;

@@ -34,7 +34,6 @@ This is an online community where you could share your thoughts and help improve
 * Show notification button on nav
 * User forgot password send reset password to email
 * Tests
-* Add delete confirm
 
 ### Mid priority:
 * User email verification

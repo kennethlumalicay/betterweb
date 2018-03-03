@@ -29,7 +29,7 @@ mongoose.Promise = global.Promise;
 
 // Session
 app.use(session({
-  secret: 'secretKLM',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
   store: new mongoStore({ mongooseConnection: mongoose.connection })
