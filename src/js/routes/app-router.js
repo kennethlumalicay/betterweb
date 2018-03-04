@@ -16,9 +16,9 @@ class Routes extends Component {
         <Route component={Nav}/>
         <Switch>
           <Route path='/' component={Home} exact/>
-          <Route path='/user/:uid' component={UserPage}/>
-          <Route path='/post/:pid' component={PostPage}/>
-          <Route path='/admin' component={AdminPage}/>
+          <Route path='/user/:uid' component={UserPage} exact/>
+          <Route path='/post/:pid' component={PostPage} exact/>
+          <Route path='/admin' component={AdminPage} exact/>
           <Route component={NotFound}/>
         </Switch>
       </section>

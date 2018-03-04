@@ -22,13 +22,12 @@ export const mappedTags = (checked) => usertags.map((e,i) => e.hidden ? null : (
   </label>
 ));
 
-export const oneTag = (user, disabled) => {
+export const oneTag = user => {
   const { tag, color } = usertags.filter(e => e.tag === (user || 'User'))[0] || usertags[0];
   return (
-    <label className='usertag' style={{backgroundColor: color}}>
-      <input type='radio' name='usertag' value={tag} defaultChecked={!disabled} disabled={disabled}/>
+    <div className='usertag' style={{backgroundColor: color}}>
       <span>{tag}</span>
-    </label>
+    </div>
   );
 };
 

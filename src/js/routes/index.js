@@ -2,6 +2,8 @@ import * as userApi from './../api/userApi.js';
 import * as postApi from './../api/postApi.js';
 import * as commentApi from './../api/commentApi.js';
 
+const api = {userApi, postApi, commentApi};
+
 module.exports = function (app, passport, upload) {
 
   app.route('/login')
@@ -23,48 +25,24 @@ module.exports = function (app, passport, upload) {
       });
     });
 
-  app.route('/auth/twitter')
-    .get(passport.authenticate('twitter'));
+  // Make routes for strategies
+  for(const strategy of strategies) {
+    app.route(`/auth/${strategy}`)
+      .get(passport.authenticate(strategy));
 
-  app.route('/auth/twitter/callback')
-    .get(passport.authenticate('twitter', {
-      successRedirect: '/',
-      failureRedirect: '/'
-    }));
+    app.route(`/auth/${strategy}/callback`)
+      .get(passport.authenticate(strategy, {
+        successRedirect: '/',
+        failureRedirect: '/'
+      }));
+  }
 
-  app.route('/auth/github')
-    .get(passport.authenticate('github'));
-
-  app.route('/auth/github/callback')
-    .get(passport.authenticate('github', {
-      successRedirect: '/',
-      failureRedirect: '/'
-    }));
-
-  app.route('/api/fetchUsers')
-    .get(function (req, res) {
-      userApi.fetchUsers(req.query, (docs) => res.send(docs));
+  // Make routes for common apis
+  for(const route of routes) {
+    app.route(`/api/${route.name}`)[route.type]((req, res) => {
+      api[route.api][route.name](req.query, docs => res.send(docs));
     });
-
-  app.route('/api/fetchUser')
-    .get(function (req, res) {
-      userApi.fetchUser(req.query, (docs) => res.send(docs));
-    });
-
-  app.route('/api/updateUser')
-    .post(function (req, res) {
-      userApi.updateUser(req.query, (docs) => res.send(docs));
-    });
-
-  app.route('/api/fetchPosts')
-    .get(function (req, res) {
-      postApi.fetchPosts(req.query, (docs) => res.send(docs));
-    });
-
-  app.route('/api/fetchOnePost')
-    .get(function (req, res) {
-      postApi.fetchOnePost(req.query, (docs) => res.send(docs));
-    });
+  }
 
   app.route('/api/addPost')
     .post(upload.single('img'), function (req, res) {
@@ -80,46 +58,74 @@ module.exports = function (app, passport, upload) {
       };
       postApi.editPost({...req.body, ...req.query, ...newImg}, (docs) => res.send(docs));
     });
-
-  app.route('/api/deletePost')
-    .post(function (req, res) {
-      postApi.deletePost(req.query, (docs) => res.send(docs));
-    });
-
-  app.route('/api/fetchComments')
-    .get(function (req, res) {
-      commentApi.fetchComments(req.query, (docs) => res.send(docs));
-    });
-
-  app.route('/api/fetchPageComments')
-    .get(function (req, res) {
-      commentApi.fetchPageComments(req.query, (docs) => res.send(docs));
-    });
-
-  app.route('/api/addComment')
-    .post(function (req, res) {
-      commentApi.addComment(req.query, (docs) => res.send(docs));
-    });
-
-  app.route('/api/deleteComment')
-    .post(function (req, res) {
-      commentApi.deleteComment(req.query, (docs) => res.send(docs));
-    });
-
-  app.route('/api/upvote')
-    .post(function (req, res) {
-      userApi.upvote(req.query, (docs) => res.send(docs));
-    });
-
-  app.route('/api/checkPost')
-    .post(function (req, res) {
-      postApi.checkPost(req.query, (docs) => res.send(docs));
-    });
-
-  /*
-  app.route('/api/secret/updateAllPostModel')
-    .get(function (req, res) {
-      postApi.updateAllPostModel((docs) => res.send(docs));
-    });
-  */
 };
+
+const strategies = ['twitter', 'github'];
+
+const routes = [
+  {
+    name: 'fetchUsers',
+    type: 'get',
+    api: 'userApi'
+  },
+  {
+    name: 'fetchUser',
+    type: 'get',
+    api: 'userApi'
+  },
+  {
+    name: 'updateUser',
+    type: 'post',
+    api: 'userApi'
+  },
+  {
+    name: 'upvote',
+    type: 'post',
+    api: 'userApi'
+  },
+  {
+    name: 'checkPost',
+    type: 'post',
+    api: 'postApi'
+  },
+  {
+    name: 'fetchPosts',
+    type: 'get',
+    api: 'postApi'
+  },
+  {
+    name: 'fetchOnePost',
+    type: 'get',
+    api: 'postApi'
+  },
+  {
+    name: 'deletePost',
+    type: 'post',
+    api: 'postApi'
+  },
+  {
+    name: 'fetchComments',
+    type: 'get',
+    api: 'commentApi'
+  },
+  {
+    name: 'fetchPageComments',
+    type: 'get',
+    api: 'commentApi'
+  },
+  {
+    name: 'fetchComments',
+    type: 'get',
+    api: 'commentApi'
+  },
+  {
+    name: 'addComment',
+    type: 'post',
+    api: 'commentApi'
+  },
+  {
+    name: 'deleteComment',
+    type: 'post',
+    api: 'commentApi'
+  }
+];

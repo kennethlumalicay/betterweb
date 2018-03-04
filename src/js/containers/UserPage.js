@@ -45,7 +45,7 @@ class UserPage extends Component {
     }
     const { uid } = this.state;
     const user = items.filter(e => e.uid === uid)[0];
-    if(document) {
+    if(document && user) {
       document.title = user.username + ' | BetterWeb';
       document.description = 'See ' + user.username + '\'s work and give feedback.';
     }

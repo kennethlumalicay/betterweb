@@ -901,12 +901,13 @@ input {
   padding: 2px 0.5rem;
   border: 0.1rem solid #333;
   font-weight: 400;
+  cursor: default;
 }
 .usertag > input {
   display: none;
 }
 .usertag > span {
-  display: inline-block;
+  display: block;
   text-transform: uppercase;
   color: #333;
   font-family: Oswald;
@@ -1375,7 +1376,7 @@ input {
   -webkit-box-pack: center;
           justify-content: center;
 }
-.commentUser h6 {
+.commentUser h6, .commentUser a {
   margin: auto;
   color: #888;
   text-decoration: underline;
