@@ -1,4 +1,4 @@
-![Logo](./src/img/betterweb-logo-readme.png "Hey, you're awesome!")
+![Logo](./public/img/betterweb-logo-readme.png "Hey, you're awesome!")
 
 # Welcome to BetterWeb
 This is an online community where you could share your thoughts and help improve the quality of deployed apps or websites.
