@@ -957,7 +957,7 @@ input {
 }
 /* -- HOME START -- */
 .splash {
-  min-height: 30vh;
+  min-height: 50vh;
   display: -webkit-box;
   display: flex;
   background-image: url('../img/splash-bg2-768.jpg');
@@ -967,6 +967,7 @@ input {
 }
 @media screen and (min-width: 768px) {
   .splash {
+    min-height: 30vh;
     background-image: url('../img/splash-bg2-1440.jpg');
   }
 }
@@ -977,8 +978,9 @@ input {
 }
 .splash > div {
   margin: auto auto auto auto;
-  padding: 1rem 0.5rem;
-  max-width: 90vw;
+  padding: 2rem 1rem;
+  width: 100%;
+  max-width: 28.5rem;
   background-color: rgba(233,233,233,0.95);
 }
 .splash > div > h1 {
@@ -994,12 +996,13 @@ input {
   display: flex;
   justify-content: flex-end;
 }
-@media screen and (min-width: 768px) {
-  .splash {
+@media screen and (min-width: 460px) {
+  .splash > div {
     padding: 2rem;
   }
-  .splash > div {
-    max-width: 28.5rem;
+}
+@media screen and (min-width: 768px) {
+  .splash {
     padding: 2rem;
   }
 }
