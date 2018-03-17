@@ -4,8 +4,8 @@ import Posts from './../containers/Posts.js';
 class Home extends Component {
 
   componentDidMount() {
-    document.title = 'BetterWeb: Get feedback to improve the quality of your website';
-    document.description = 'BetterWeb is a growing community of web owners and developers where we share our websites and give each other feedback, suggestions or feature requests to improve the quality of our website.';
+    document.title = 'BetterWeb: Get feedback and collaborate to improve your website';
+    document.description = 'BetterWeb connects people in a productive way. Get / give feedback, collaborate and connect with people from various industries. Together we can make a better web.';
   }
 
   render() {
@@ -13,8 +13,8 @@ class Home extends Component {
       <section id='home'>
         <div className='splash'>
           <div>
-            <h1>Giving each other feedback should be a culture</h1>
-            <p>Let's make a feedback culture in web development so we can all grow and learn from one another.</p>
+            <h1>Connect with people in a productive way</h1>
+            <p>Get / give feedback, collaborate and connect with people from various industries. Together we can make a better web.</p>
             <p>Start by posting your website or by giving a feedback!</p>
             <div className='splash-social'>
               <a href='https://www.facebook.com/BetterWebTech/' target='_blank' rel='noopener noreferrer'><i className='fa fa-facebook' aria-hidden='true'></i></a> 
