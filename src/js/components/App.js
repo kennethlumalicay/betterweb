@@ -10,8 +10,8 @@ class App extends Component {
         <Notif/>
         <Routes/>
         <footer>
-          <p>App made by <a href='https://kennethlumalicay.github.io/' target='_blank' rel='noopener noreferrer'>Kenneth Malicay</a>. Don't forget to star and fork the <a href='https://github.com/kennethlumalicay/betterweb' target='_blank' rel='noopener noreferrer'>github repo</a>!</p>
-          <p><a onClick={() => logOutboundLink('paypal')} href='https://paypal.me/kennethlumalicay/2' target='_blank' rel='noopener noreferrer'>Buy me a coffee or help keep the server up and running.</a></p>
+          <p>App made by <a href='https://kennethlumalicay.github.io/' target='_blank' rel='noopener noreferrer'>Kenneth Malicay</a>. Don't forget to star and fork the <a href='https://github.com/kennethlumalicay/betterweb' target='_blank' rel='noopener noreferrer'>betterweb github repo</a>!</p>
+          <p><a onClick={() => logOutboundLink('paypal')} href='https://paypal.me/kennethlumalicay/2' target='_blank' rel='noopener noreferrer'>Buy me a coffee or help keep BetterWeb up and running.</a></p>
         </footer>
       </section>
     );
