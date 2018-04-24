@@ -136,7 +136,7 @@ class Nav extends Component {
     return (
       <section id='nav'>
         <span className='betterweb-logo'>
-          <Link to='/'><img src='/src/img/betterweb-logo.png' alt='logo'/></Link>
+          <Link to='/'><img src='/src/img/betterweb-logo-with-bg.png' alt='logo'/></Link>
         </span>
 
         <button className='dropdown' onClick={() => this.toggleMenu()}>Menu <i className='fa fa-chevron-down' aria-hidden='true'></i></button>
