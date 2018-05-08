@@ -683,6 +683,7 @@ input {
 }
 .betterweb-logo > a > img {
   max-height: 3rem;
+  border-radius: 2px;
 }
 .dropdown {
   margin: auto 0 auto auto;
@@ -1155,7 +1156,6 @@ input {
   font-size: 0.9rem;
   word-wrap: break-word;
   transition: all 0.5s ease-in-out;
-  overflow: hidden;
 }
 .post-img {
   max-width: 100%;
@@ -1163,6 +1163,7 @@ input {
   background-position: center;
   background-size: cover;
   transition: all 0.35s ease-in-out;
+  border-radius: 2px;
 }
 .post-img:hover {
   filter: brightness(0.8);
