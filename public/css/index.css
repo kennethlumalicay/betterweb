@@ -800,7 +800,7 @@ input {
   position: fixed;
   top: 0;
   left: 0;
-  right: -18px;
+  right: 0;
   padding: 3vh 0;
   display: -webkit-box;
   display: flex;
@@ -811,7 +811,7 @@ input {
           align-items: center;
   outline: none;
   max-height: 94vh;
-  overflow-y: scroll;
+  overflow-y: auto;
   -webkit-animation: 0.5s slide-down ease-in-out;
           animation: 0.5s slide-down ease-in-out;
 }
@@ -833,6 +833,8 @@ input {
   padding: 0.5rem 1rem;
   border: 1rem solid #333;
   background-color: rgba(233,233,233,0.6);
+  max-width: 100%;
+  box-sizing: border-box;
 }
 .modal-close {
   flex-shrink: 0;
@@ -891,6 +893,10 @@ input {
     width: 20rem;
   }
 }
+#settings {
+  display: flex;
+  flex-direction: column;
+}
 .form-add {
   position: relative;
   -webkit-animation: 0.25s slide-down ease-in-out;
@@ -947,7 +953,7 @@ input {
 }
 /* x FORM END x */
 .gamsg {
-  width: 20rem;
+  max-width: 100%;
   font-size: 0.8rem;
 }
 /* xx MODALS END xx */
