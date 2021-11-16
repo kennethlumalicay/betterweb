@@ -34,7 +34,7 @@
     "webpack-dev-server": "^2.9.4"
   },
   "dependencies": {
-    "aws-sdk": "^2.155.0",
+    "aws-sdk": "^2.814.0",
     "axios": "^0.16.2",
     "babel-polyfill": "^6.26.0",
     "bcryptjs": "^2.4.3",
