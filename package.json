@@ -47,7 +47,7 @@
     "highlight.js": "^9.12.0",
     "markdown-it": "^8.4.0",
     "markdown-it-emoji": "^1.4.0",
-    "mongoose": "^4.13.1",
+    "mongoose": "^4.13.21",
     "multer": "^1.3.0",
     "multer-s3": "^2.7.0",
     "passport": "^0.3.2",
